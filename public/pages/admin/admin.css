@@ -1,0 +1,12 @@
+
+
+
+main {
+    max-width: 100vw;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: #eaeaea;
+}

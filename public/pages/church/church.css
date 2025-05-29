@@ -1,0 +1,251 @@
+
+
+
+/* Block: main */
+.main {
+    max-width: 100vw;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #eaeaea;
+}
+
+/* Block: welcome */
+.welcome {
+    position: relative;
+    min-height: 25rem;
+    max-height: 30rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a0909;
+    font-size: 22px;
+    opacity: 0.9;
+    color: white;
+    overflow: hidden;
+}
+
+.welcome__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 25rem;
+    background: url("/public/images/churchBackground.webp") no-repeat center center / cover;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+
+
+/* Block: church-activity */
+.church-activity {
+    margin: 3% 10%;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.church-activity__text {
+    margin: 1rem 2rem;
+    text-align: left;
+    color: #3f4359;
+}
+
+
+
+
+/* Block: faith */
+.faith {
+    margin-top: 3%;
+    padding: 2% 0 5%;
+    color: white;
+    background-color: #5B4565;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.faith__title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.faith__container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.faith__section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    list-style-type: none;
+}
+
+
+.faith__section-visible {
+    display: flex;
+}
+
+.faith__section-item {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.faith__section-item--highlight {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+
+
+.faith__container-button {
+    display: none;
+    margin: 1rem auto 0;
+    padding: 0.5rem 1rem;
+    font-size: 20px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.faith__container-button,
+.faith__container-button {
+    background-color: #83679B;
+}
+
+
+
+
+
+/* Block: pastor */
+.pastor {
+    width: 90%;
+    margin-top: 5%;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    color: #3f4359;
+}
+
+.pastor__image {
+    height: 20rem;
+    background: url('/public/images/pastor.webp') no-repeat left center / contain;
+}
+
+.pastor__info {
+    line-height: 0.5;
+}
+
+
+
+
+/* Block: church-serving-text */
+.church-serving-text {
+    background-color: #EAEAEA;
+    width: 100%;
+    min-height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #3f4359;
+}
+
+.church-serving-text__content {
+    width: 80%;
+    font-size: var(--font-size-h2);
+    text-align: center;
+}
+
+
+
+
+
+/* Media Queries */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .welcome {
+        min-height: 20rem;
+        max-height: 25rem;
+    }
+    .church-activity {
+        font-size: 20px;
+    }
+    .faith {
+        font-size: 18px;
+    }
+
+    .faith__section-hidden {
+        display: flex;
+    }
+
+    .faith__container-button {
+        display: flex;
+    }
+
+    .church-serving-text__content {
+        font-size: var(--font-size-h2);
+        text-align: left;
+    }
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .welcome {
+        min-height: 15rem;
+        max-height: 15rem;
+    }
+    .faith {
+        margin-top: 7%;
+    }
+    .faith__container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .faith__container-button {
+        display: flex;
+    }
+
+    .faith__section {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .faith__section-hidden {
+        display: none;
+    }
+    
+    .pastor__image {
+        height: 20rem;
+    }
+
+    .church-serving-text__content {
+        font-size: var(--font-size-h2);
+        text-align: left;
+    }
+
+}

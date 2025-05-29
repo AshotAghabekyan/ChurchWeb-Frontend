@@ -1,0 +1,201 @@
+@font-face {
+  font-family: "bainsley";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("./fonts/Bainsley.ttf") format("truetype");
+}
+
+:root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+html,
+body,
+main {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "bainsley", sans-serif;
+  line-height: 1.5;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1.5;
+}
+
+main {
+  max-width: "100vw";
+  min-height: "100vh";
+}
+
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* :root {
+  --animation-curve: cubic-bezier(1, 0, 0, 1);
+  --font-size-h1: 36px;
+  --font-size-h2: 32px;
+  --font-size-body: 18px;
+  --font-size-small: 16px;
+  --font-size-button: 18px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --font-size-h1: 32px;
+    --font-size-h2: 28px;
+    --font-size-body: 16px;
+    --font-size-small: 14px;
+    --font-size-button: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-h1: 28px;
+    --font-size-h2: 24px;
+    --font-size-body: 14px;
+    --font-size-small: 12px;
+    --font-size-button: 14px;
+  }
+}
+
+body {
+  font-size: var(--font-size-body);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+small {
+  font-size: var(--font-size-small);
+}
+
+button {
+  font-size: var(--font-size-button);
+} */
