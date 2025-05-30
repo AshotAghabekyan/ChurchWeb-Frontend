@@ -5,6 +5,7 @@ import {
   PRIMARY_PURPLE,
   WHITE,
 } from "../../../constants/colors";
+import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
 const Container = styled(Box)(({ theme }) => ({
   backgroundColor: WHITE,
@@ -15,7 +16,7 @@ const Container = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     width: "100%",
   },
-  borderRadius: 10,
+  borderRadius: COMMON_BORDER_RADIUS,
   animation: "slideUp 1s ease-out",
 }));
 

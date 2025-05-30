@@ -1,9 +1,9 @@
-import { Box, IconButton, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { PRIMARY_PURPLE, WHITE } from "../../../constants/colors";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
-import { useFundamentalsFaith } from "./useFundamentalsFaith";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import useLayout from "../../../hooks/layout/useLayout";
+import AccordionList from "./AccordionList";
 
 const Container = styled(Box)({
   width: "100%",
@@ -24,34 +24,27 @@ const ColumnsContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   justifyContent: "space-evenly",
   [theme.breakpoints.down("md")]: {
+    maxHeight: "400px",
+    overflow: "auto",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
 }));
 
 function FundamentalsFaith() {
-  const { expanded, handleToggle, smallLayout } = useFundamentalsFaith();
+  const { smallLayout } = useLayout();
 
   return (
     <Container>
       <SectionTitle>ՀԱՎԱՏՔԻ ՀԻՄՔԵՐԸ</SectionTitle>
+      {smallLayout ? (
+        <AccordionList />
+      ) : (
       <ColumnsContainer>
-        <LeftColumn showAll={expanded} />
-        <RightColumn showAll={expanded} />
+        <LeftColumn />
+        <RightColumn />
       </ColumnsContainer>
-
-      {smallLayout && (
-        <IconButton
-          onClick={handleToggle}
-          sx={{
-            transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-            transition: "transform 0.3s ease",
-            alignSelf: "center",
-          }}
-        >
-          <ExpandMoreIcon fontSize="large" sx={{ color: WHITE }} />
-        </IconButton>
       )}
     </Container>
   );

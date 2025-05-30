@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import VideoItemPaper from "./VideoItemPaper";
+import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
 function VideoItemGrid(props) {
   return (
@@ -9,7 +10,7 @@ function VideoItemGrid(props) {
         slotProps={{
           videoPlayer: {
             sx: {
-              borderRadius: "10px 10px 0 0",
+              borderRadius: `${COMMON_BORDER_RADIUS}px ${COMMON_BORDER_RADIUS}px 0 0`,
             },
           },
         }}

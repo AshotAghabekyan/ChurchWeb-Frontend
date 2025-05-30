@@ -2,7 +2,7 @@ import { List, styled } from "@mui/material";
 import ColumnParagraph from "./ColumnParagraph";
 import { LIGHT_PURPLE } from "../../../constants/colors";
 import { FAIHT_FUNDAMENTALS_LEFT_COLUMN } from "../../../constants/church";
-import useLayout from "../../../hooks/layout/useLayout";
+import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
 const StyledList = styled(List)(({ theme }) => ({
   width: "45%",
@@ -16,19 +16,14 @@ const StyledList = styled(List)(({ theme }) => ({
   flexDirection: "column",
   gap: 32,
   backgroundColor: LIGHT_PURPLE,
-  borderRadius: 10,
+  borderRadius: COMMON_BORDER_RADIUS,
 }));
 
-function LeftColumn(props: any) {
-  const { showAll } = props;
-  const { smallLayout } = useLayout();
-  const defaultOptions =
-    showAll || !smallLayout
-      ? FAIHT_FUNDAMENTALS_LEFT_COLUMN
-      : FAIHT_FUNDAMENTALS_LEFT_COLUMN.slice(0, 1);
+function LeftColumn() {
+
   return (
     <StyledList>
-      {defaultOptions.map((option) => {
+      {FAIHT_FUNDAMENTALS_LEFT_COLUMN.map((option) => {
         return (
           <ColumnParagraph
             key={option.title}

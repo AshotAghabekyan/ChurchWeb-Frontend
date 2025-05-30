@@ -6,6 +6,7 @@ import PastorAccount from "./pastor/PastorAccount";
 import PastorBiograpy from "./pastor/PastorBiography";
 import FundamentalsFaith from "./fundamentalsFaith/FundamentalsFaith";
 import useLayout from "../../hooks/layout/useLayout";
+import PageHeaderTitle from "../../components/PageHeaderTitle";
 
 const Container = styled(Box)({
   display: "flex",
@@ -54,7 +55,9 @@ function Church() {
   const { smallLayout } = useLayout();
   return (
     <Container>
-      <PageHeader imageUrl={bgImage} title="Եկեղեցի" />
+      <PageHeader imageUrl={bgImage}>
+        <PageHeaderTitle>Եկեղեցի</PageHeaderTitle>
+      </PageHeader>
       <BiograpyContainer>
         <PastorAccount />
         <PastorBiograpy />

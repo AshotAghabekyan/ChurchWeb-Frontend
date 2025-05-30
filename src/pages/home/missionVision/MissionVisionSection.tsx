@@ -12,7 +12,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   width: "100%",
   minHeight: "22rem",
   padding: "2rem",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     paddingInline: "1rem",
     flexDirection: "column",
     justifyContent: "flex-start",

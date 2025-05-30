@@ -1,4 +1,4 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { shouldForwardProp } from "../helpers/shouldForwardProp";
 import {
   MAIN_BG_IMAGE_HEIGHT,
@@ -29,16 +29,11 @@ const Container = styled(Box, { shouldForwardProp })(
 );
 
 function PageHeader(props: Record<string, any>) {
-  const { imageUrl, title, ...restProps } = props;
+  const { imageUrl, children, ...restProps } = props;
   const { smallLayout } = useLayout();
   return (
     <Container $url={imageUrl} $smallLayout={smallLayout} {...restProps}>
-      <Typography
-        style={{ textAlign: "center", width: "100%" }}
-        variant={smallLayout ? "h4" : "h2"}
-      >
-        {title}
-      </Typography>
+      {children}
     </Container>
   );
 }

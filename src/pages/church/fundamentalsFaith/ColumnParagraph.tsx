@@ -11,7 +11,7 @@ const StyledListItem = styled(ListItem)({
 });
 
 
-const HighlightedUnderlinedText = styled("u")({
+const HighlightedUnderlinedText = styled("span")({
   color: BRIGHT_GOLDEN,
   fontWeight: "bold",
 });

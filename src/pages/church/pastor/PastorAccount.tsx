@@ -1,6 +1,7 @@
 import { Box, styled } from "@mui/material";
 import pastorImage from "../../../images/pastorMainImage.jpg";
 import { SECONDARY_COLOR } from "../../../constants/colors";
+import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
 const Container = styled(Box)(({ theme }) => ({
   width: theme.breakpoints.down("md") ? "100%" : "40%",
@@ -14,10 +15,11 @@ const PastorImage = styled("img")(({ theme }) => {
   return {
     width: "100%",
     height: "auto",
-    borderRadius: 10,
+    borderRadius: COMMON_BORDER_RADIUS,
     objectFit: "contain",
-    [theme.breakpoints.between("sm", "md")]: {
-      maxHeight: "30rem",
+    [theme.breakpoints.between("sm", "lg")]: {
+      width: "80%",
+      maxHeight: "40rem",
       objectFit: "cover",
       objectPosition: "top",
     },

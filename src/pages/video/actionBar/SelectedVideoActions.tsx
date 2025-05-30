@@ -5,6 +5,7 @@ import VideoStatsBar from "./VideoStatBar";
 import VideoActionsBar from "./VideoActionBar";
 import FilledLightChip from "../../../components/chip/FilledLightChip";
 import OutlinedLightChip from "../../../components/chip/OutlinedLightChip";
+import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -12,7 +13,7 @@ const Container = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   backgroundColor: DARK_GRAY,
   width: "100%",
-  borderRadius: "10px",
+  borderRadius: COMMON_BORDER_RADIUS,
   gap: "8px",
   [theme.breakpoints.down("md")]: {
     justifyContent: "flex-start",

@@ -1,5 +1,6 @@
 import { Box, styled } from "@mui/material";
 import PlayVideoIcon from "./PlayVideoIcon";
+import { COMMON_BORDER_RADIUS } from "../../constants/common";
 
 const ImageWrapper = styled(Box)({
   display: "flex",
@@ -7,7 +8,7 @@ const ImageWrapper = styled(Box)({
   position: "relative",
   width: "100%",
   cursor: "pointer",
-  borderRadius: 10,
+  borderRadius: COMMON_BORDER_RADIUS,
   overflow: "hidden",
   "&:hover .play-icon": {
     opacity: 1,

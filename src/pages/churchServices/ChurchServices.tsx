@@ -4,6 +4,7 @@ import PageHeader from "../../components/PageHeader";
 import ConcreteService from "./ConcreteService";
 import { WHITE } from "../../constants/colors";
 import { CHURCH_SERVICES } from "../../constants/churchServices";
+import PageHeaderTitle from "../../components/PageHeaderTitle";
 
 const Container = styled(Box)({
   width: "100%",
@@ -17,7 +18,9 @@ function ChurchServices() {
   const REVERSED_CONTAINER_INDEX = 1;
   return (
     <Container>
-      <PageHeader imageUrl={headerBgImage} title="Մեր Ծառայությունները" />
+      <PageHeader imageUrl={headerBgImage}>
+        <PageHeaderTitle>Մեր Ծառայությունները</PageHeaderTitle>
+      </PageHeader>
       {CHURCH_SERVICES.map((service, index) => {
         return (
           <ConcreteService

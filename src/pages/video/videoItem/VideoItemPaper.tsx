@@ -3,9 +3,10 @@ import { Paper, styled, Typography } from "@mui/material";
 import VideoPlayer from "../../../components/video/VideoPlayer";
 import VideoBottomBar from "../actionBar/VideoBottomBar";
 import { CONCRETE_VIDEO_PAGE } from "../../../constants/pages";
+import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
 const StyledPaper = styled(Paper)({
-  borderRadius: 10,
+  borderRadius: COMMON_BORDER_RADIUS,
 });
 
 function VideoItemPaper(props) {

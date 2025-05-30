@@ -6,6 +6,7 @@ import LoadingPlaceholder from "../../components/LoadPlaceholder";
 import PageHeader from "../../components/PageHeader";
 import { VIDEO_LIST_PAGE_HEADER_TITLE } from "../../constants/typography";
 import VideoItemGrid from "./videoItem/VideoItemGrid";
+import PageHeaderTitle from "../../components/PageHeaderTitle";
 
 const Container = styled(Box)({
   display: "flex",
@@ -18,10 +19,9 @@ function VideosGridView() {
 
   return (
     <Container>
-      <PageHeader
-        imageUrl={videoListHeaderBg}
-        title={VIDEO_LIST_PAGE_HEADER_TITLE}
-      />
+      <PageHeader imageUrl={videoListHeaderBg}>
+        <PageHeaderTitle>{VIDEO_LIST_PAGE_HEADER_TITLE}</PageHeaderTitle>
+      </PageHeader>
       <Grid
         padding={smallLayout ? "1rem" : "2rem"}
         container

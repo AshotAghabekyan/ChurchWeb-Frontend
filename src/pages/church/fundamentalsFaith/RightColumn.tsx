@@ -2,7 +2,7 @@ import { List, styled } from "@mui/material";
 import ColumnParagraph from "./ColumnParagraph";
 import { LIGHT_PURPLE } from "../../../constants/colors";
 import { FAIHT_FUNDAMENTALS_RIGHT_COLUMN } from "../../../constants/church";
-import useLayout from "../../../hooks/layout/useLayout";
+import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
 const StyledList = styled(List)(({ theme }) => ({
   width: "45%",
@@ -16,28 +16,23 @@ const StyledList = styled(List)(({ theme }) => ({
   flexDirection: "column",
   gap: 32,
   backgroundColor: LIGHT_PURPLE,
-  borderRadius: 10,
+  borderRadius: COMMON_BORDER_RADIUS,
 }));
 
-function RightColumn(props: any) {
-  const { showAll } = props;
-  const { smallLayout } = useLayout();
-  const showList = !smallLayout || showAll;
+function RightColumn() {
   return (
-    showList && (
-      <StyledList>
-        {FAIHT_FUNDAMENTALS_RIGHT_COLUMN.map((option) => {
-          return (
-            <ColumnParagraph
-              key={option.title}
-              title={option.title}
-              description={option.description}
-              refVerb={option.refVerb}
-            />
-          );
-        })}
-      </StyledList>
-    )
+    <StyledList>
+      {FAIHT_FUNDAMENTALS_RIGHT_COLUMN.map((option) => {
+        return (
+          <ColumnParagraph
+            key={option.title}
+            title={option.title}
+            description={option.description}
+            refVerb={option.refVerb}
+          />
+        );
+      })}
+    </StyledList>
   );
 }
 

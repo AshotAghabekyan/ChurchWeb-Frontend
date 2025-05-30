@@ -14,6 +14,7 @@ import useLayout from "../../hooks/layout/useLayout";
 import SecondaryButton from "../../components/button/SecondaryButton";
 import { CONTACTS_PAGE } from "../../constants/pages";
 import TextEllipsisContainer from "../../components/textEllipsis/TextEllipsisContainer";
+import { COMMON_BORDER_RADIUS } from "../../constants/common";
 
 interface StyledCardProps {
   $reverse: boolean;
@@ -42,7 +43,7 @@ const StyledCardMedia = styled(CardMedia, { shouldForwardProp })(
   ({ theme }) => ({
     width: "100%",
     height: "auto",
-    borderRadius: 10,
+    borderRadius: COMMON_BORDER_RADIUS,
     objectFit: "contain",
     [theme.breakpoints.down("md")]: {
       height: "30rem",

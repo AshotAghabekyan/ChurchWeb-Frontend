@@ -1,5 +1,5 @@
 import { Box, styled, Typography } from "@mui/material";
-import worshipBgImage from "../../../images/videoBackground2.webp";
+import worshipBgImage from "../../../images/videosPageBackground.webp";
 import { shouldForwardProp } from "../../../helpers/shouldForwardProp";
 import { ORANGE_BASE } from "../../../constants/colors";
 import ToVideosPageButton from "./ToVideosPageButton";
@@ -34,19 +34,19 @@ const Wrapper = styled(Box, { shouldForwardProp })(
 const WrapperContent = styled(Box)({
   width: "100%",
   display: "flex",
-  justifyContent: 'center',
+  justifyContent: "center",
   flexDirection: "column",
   gap: "30px",
 });
 
 function VideosSection() {
-  const { mediumLayout } = useLayout();
+  const { mediumLayout, smallLayout } = useLayout();
   return (
     <Container>
       <Wrapper $mediumLayout={mediumLayout}>
         <WrapperContent>
           <Typography variant="h3">Մեր տեսանյութերը</Typography>
-          <Typography variant="h4">
+          <Typography variant={smallLayout ? "h5" : "h4"}>
             Դիտեք մեր ծառայություններն օնլայն
           </Typography>
         </WrapperContent>
