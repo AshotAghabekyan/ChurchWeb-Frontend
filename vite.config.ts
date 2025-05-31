@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react(), svgr()],
   server: {
     host: "0.0.0.0",
+    headers: {
+      "cache-control": "private, max-age=3600",
+    },
   },
 });

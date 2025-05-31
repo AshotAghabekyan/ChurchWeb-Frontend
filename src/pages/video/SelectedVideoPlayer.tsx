@@ -10,7 +10,7 @@ const VideoPlayerContainer = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "stretch",
   alignSelf: "center",
-  width: "80%",
+  width: "60%",
   padding: "20px",
   [theme.breakpoints.down("md")]: {
     padding: "0",

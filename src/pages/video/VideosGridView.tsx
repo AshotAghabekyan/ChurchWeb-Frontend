@@ -7,6 +7,7 @@ import PageHeader from "../../components/PageHeader";
 import { VIDEO_LIST_PAGE_HEADER_TITLE } from "../../constants/typography";
 import VideoItemGrid from "./videoItem/VideoItemGrid";
 import PageHeaderTitle from "../../components/PageHeaderTitle";
+import ServerErrorPage from "../exceptions/ServerErrorPage";
 
 const Container = styled(Box)({
   display: "flex",
@@ -15,7 +16,7 @@ const Container = styled(Box)({
 
 function VideosGridView() {
   const { smallLayout } = useLayout();
-  const { videosList, isLoading } = useVideoList();
+  const { videosList, isLoading, errors } = useVideoList();
 
   return (
     <Container>
@@ -29,9 +30,12 @@ function VideosGridView() {
         columnSpacing={5}
         justifyContent={"center"}
       >
+        {!isLoading && errors && <ServerErrorPage />}
+
         {isLoading ? (
           <LoadingPlaceholder />
         ) : (
+          !errors &&
           videosList.map((video) => {
             return <VideoItemGrid video={video} key={video.id} />;
           })

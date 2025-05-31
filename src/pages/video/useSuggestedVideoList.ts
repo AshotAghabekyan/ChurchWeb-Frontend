@@ -6,6 +6,7 @@ import useLayout from "../../hooks/layout/useLayout";
 export function useSuggestedVideoList() {
   const { smallLayout } = useLayout();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [errors, setErrors] = useState(null);
   const [relatedVideos, setRelatedVideos] = useState([]);
   const params = useParams();
   const videoId = params.id!;
@@ -13,7 +14,7 @@ export function useSuggestedVideoList() {
   useEffect(() => {
     getRelatedVideos(videoId)
       .then((relatedVideos) => setRelatedVideos(relatedVideos))
-      .catch((error) => console.log("error", error))
+      .catch((error) => setErrors(error))
       .finally(() => setIsLoading(false));
   }, [videoId]);
 
@@ -21,5 +22,6 @@ export function useSuggestedVideoList() {
     isLoading,
     relatedVideos,
     smallLayout,
+    errors,
   };
 }

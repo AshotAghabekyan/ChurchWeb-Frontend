@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@mui/system/styled";
 import { SECONDARY_COLOR, WHITE } from "../../constants/colors";
 import ButtonBase from "./Button";
 

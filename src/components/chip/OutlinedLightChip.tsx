@@ -1,4 +1,5 @@
-import { Chip, styled } from "@mui/material";
+import styled from "@mui/system/styled";
+import Chip from "@mui/material/Chip";
 import { WHITE } from "../../constants/colors";
 
 const StyledChip = styled(Chip)({

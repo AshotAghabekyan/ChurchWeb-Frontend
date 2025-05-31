@@ -18,27 +18,20 @@ const StyledAccordion = styled(Accordion)({
 });
 
 function AccordionItem(props) {
-  const { title, description, refVerb, id, expanded, onClick } = props;
+  const { title, description, refVerb, id, expanded, onClick, onClose } = props;
   const opened = expanded == id;
-  const iconToggleButtonClick = (e) => {
+  const toggleButtonClick = (e) => {
     if (opened) {
       e.stopPropagation();
-      onClick(null);
+      onClose();
     } else {
-      onClick(id);
+      onClick();
     }
   };
 
   return (
-    <StyledAccordion expanded={expanded == id} onClick={() => onClick(id)}>
-      <AccordionSummary
-        expandIcon={
-          <ExpandMoreIcon
-            onClick={iconToggleButtonClick}
-            sx={{ color: WHITE }}
-          />
-        }
-      >
+    <StyledAccordion expanded={expanded == id} onClick={toggleButtonClick}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: WHITE }} />}>
         <HighlightedUnderlinedText>{title}</HighlightedUnderlinedText>
       </AccordionSummary>
       <AccordionDetails>

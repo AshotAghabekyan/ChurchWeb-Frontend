@@ -21,6 +21,10 @@ main {
   line-height: 1.5;
 }
 
+main {
+  flex-grow: 1;
+}
+
 html,
 body,
 div,

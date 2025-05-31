@@ -23,7 +23,8 @@ function AccordionList() {
           <AccordionItem
             {...listItem}
             expanded={expanded}
-            onClick={setExpanded}
+            onClick={() => setExpanded(listItem.id)}
+            onClose={() => setExpanded(null)}
             key={listItem.id}
           />
         );

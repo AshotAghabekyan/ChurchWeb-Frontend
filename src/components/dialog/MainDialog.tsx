@@ -18,7 +18,8 @@ const DialogHeader = styled(Box)({
 });
 
 function MainDialog(props) {
-  const { title, headerIcon, content, onClose, open, actions, ...restProps } = props;
+  const { title, headerIcon, content, onClose, open, actions, ...restProps } =
+    props;
 
   return (
     <Dialog fullWidth open={open} onClose={onClose} {...restProps}>

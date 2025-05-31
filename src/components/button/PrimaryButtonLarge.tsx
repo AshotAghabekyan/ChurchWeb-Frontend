@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@mui/system/styled";
 import PrimaryButton from "./PrimaryButton";
 
 const StyledPrimaryButton = styled(PrimaryButton)({

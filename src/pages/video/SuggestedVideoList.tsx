@@ -5,9 +5,10 @@ import LoadingPlaceholder from "../../components/LoadPlaceholder";
 import VideoItemList from "./videoItem/VideoItemList";
 import { COMMON_BORDER_RADIUS } from "../../constants/common";
 import ScrollContainer from "../../components/ScrollContainer";
+import ContentUnavailable from "../exceptions/ContentUnavilable";
 
 const Container = styled(Box)(({ theme }) => ({
-  width: "80%",
+  width: "60%",
   display: "flex",
   alignSelf: "center",
   flexDirection: "column",
@@ -27,10 +28,9 @@ const SuggestedVideosHeader = styled(Box)({
   borderRadius: COMMON_BORDER_RADIUS,
 });
 
-
-
 function SuggestedVideoList() {
-  const { isLoading, relatedVideos, smallLayout } = useSuggestedVideoList();
+  const { isLoading, relatedVideos, smallLayout, errors } =
+    useSuggestedVideoList();
   return (
     <Container>
       <SuggestedVideosHeader>
@@ -39,11 +39,17 @@ function SuggestedVideoList() {
         </Typography>
       </SuggestedVideosHeader>
       <ScrollContainer>
+        {!isLoading && errors && <ContentUnavailable />}
+
         {isLoading ? (
           <LoadingPlaceholder />
         ) : (
-          relatedVideos.map((video) => (
-            <VideoItemList video={video} showBottomSection={false} />
+          !errors && relatedVideos.map((video: any) => (
+            <VideoItemList
+              video={video}
+              showBottomSection={false}
+              key={video.id}
+            />
           ))
         )}
       </ScrollContainer>
