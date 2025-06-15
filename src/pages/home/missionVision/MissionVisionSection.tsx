@@ -11,7 +11,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   justifyContent: "space-around",
   width: "100%",
   minHeight: "22rem",
-  padding: "2rem",
+  padding: "2rem 10%",
   [theme.breakpoints.down("sm")]: {
     paddingInline: "1rem",
     flexDirection: "column",

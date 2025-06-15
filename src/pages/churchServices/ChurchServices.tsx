@@ -1,10 +1,15 @@
-import { Box, styled } from "@mui/material";
+import { Box, Grid, styled } from "@mui/material";
 import headerBgImage from "../../images/servicesBackground.webp";
 import PageHeader from "../../components/PageHeader";
-import ConcreteService from "./ConcreteService";
 import { WHITE } from "../../constants/colors";
 import { CHURCH_SERVICES } from "../../constants/churchServices";
 import PageHeaderTitle from "../../components/PageHeaderTitle";
+import ConcreteServiceV2 from "./ConcreteServiceV2";
+import SecondaryButton from "../../components/button/SecondaryButton";
+import SecondaryButtonMedium from "../../components/button/SecondaryButtonMedium";
+import useLayout from "../../hooks/layout/useLayout";
+import { useNavigate } from "react-router";
+import { CONTACTS_PAGE } from "../../constants/pages";
 
 const Container = styled(Box)({
   width: "100%",
@@ -15,23 +20,47 @@ const Container = styled(Box)({
 });
 
 function ChurchServices() {
-  const REVERSED_CONTAINER_INDEX = 1;
+  const { smallLayout } = useLayout();
+  const navigator = useNavigate();
+  const onClick = () => navigator(CONTACTS_PAGE);
+
   return (
     <Container>
       <PageHeader imageUrl={headerBgImage}>
         <PageHeaderTitle>Մեր Ծառայությունները</PageHeaderTitle>
       </PageHeader>
-      {CHURCH_SERVICES.map((service, index) => {
-        return (
-          <ConcreteService
-            {...(index == REVERSED_CONTAINER_INDEX && { reverse: true })}
-            key={service.title}
-            title={service.title}
-            description={service.description}
-            image={service.image}
-          />
-        );
-      })}
+      <Grid container padding={"5% 2%"} spacing={5} width={"100%"}>
+        {CHURCH_SERVICES.map((service) => {
+          return (
+            <Grid key={service.title} size={{ md: 4, lg: 4, sm: 12, xs: 12 }}>
+              <ConcreteServiceV2
+                key={service.title}
+                title={service.title}
+                description={service.description}
+                image={service.image}
+              />
+            </Grid>
+          );
+        })}
+        <Grid
+          size={12}
+          sx={{
+            position: "sticky",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {smallLayout ? (
+            <SecondaryButton onClick={onClick} fullWidth>
+              Միանալ
+            </SecondaryButton>
+          ) : (
+            <SecondaryButtonMedium onClick={onClick} sx={{ width: "40%" }}>
+              Միանալ
+            </SecondaryButtonMedium>
+          )}
+        </Grid>
+      </Grid>
     </Container>
   );
 }

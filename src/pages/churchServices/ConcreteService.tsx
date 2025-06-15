@@ -83,7 +83,12 @@ function ConcreteService(props) {
         </Typography>
 
         {smallLayout ? (
-          <TextEllipsisContainer collapsedHeight={200} gradientHeight={200}>{description}</TextEllipsisContainer>
+          <TextEllipsisContainer
+            collapsedHeight={200}
+            timeout={{ enter: 300, exit: 300 }}
+          >
+            {description}
+          </TextEllipsisContainer>
         ) : (
           <Typography variant="h6">{description}</Typography>
         )}

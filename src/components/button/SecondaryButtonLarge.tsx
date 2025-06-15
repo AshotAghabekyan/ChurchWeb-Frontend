@@ -2,7 +2,7 @@ import styled from "@mui/system/styled";
 import SecondaryButton from "./SecondaryButton";
 
 const StyledSecondaryButton = styled(SecondaryButton)({
-  paddingBlock: 25,
+  paddingBlock: 20,
 });
 
 function SecondaryButtonLarge(props) {

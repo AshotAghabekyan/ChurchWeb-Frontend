@@ -1,4 +1,4 @@
-import { styled, Typography } from "@mui/material";
+import { Divider, styled, Typography } from "@mui/material";
 import { PRIMARY_COLOR } from "../../constants/colors";
 import headerBgImage from "../../images/home_header.webp";
 import MissionVisionSection from "./missionVision/MissionVisionSection";
@@ -6,8 +6,9 @@ import VideosSection from "./videosSection/VideosSection";
 import DonationSection from "./donationSection/DonationSection";
 import PageHeader from "../../components/PageHeader";
 import useLayout from "../../hooks/layout/useLayout";
-import ImageGrid from "./ImageGrid";
+import ImageGrid from "../../components/Image/ImageGrid";
 import VisitUs from "./VisitUs";
+import ImageCarousel from "../../components/Image/ImageCarousel";
 
 const Container = styled("main")({
   display: "flex",
@@ -16,8 +17,7 @@ const Container = styled("main")({
 });
 
 function Home() {
-  const { smallLayout } = useLayout();
-
+  const { smallLayout, mediumLayout } = useLayout();
   return (
     <Container>
       <PageHeader imageUrl={headerBgImage}>
@@ -32,7 +32,11 @@ function Home() {
       <MissionVisionSection />
       <VideosSection />
       <DonationSection />
-      <ImageGrid />
+      <Divider orientation="horizontal" sx={{ marginBlock: "10px" }} />
+      {mediumLayout ? <ImageCarousel /> : <ImageGrid />}
+      {mediumLayout && (
+        <Divider orientation="horizontal" sx={{ marginBottom: "20px" }} />
+      )}
       <VisitUs />
     </Container>
   );

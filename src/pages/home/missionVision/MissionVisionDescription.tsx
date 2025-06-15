@@ -1,6 +1,5 @@
-import { Box, styled, Typography } from "@mui/material";
-import { Link } from "react-router";
-import { ORANGE_BASE, ORANGE_HOVER } from "../../../constants/colors";
+import { Box, Button, styled, Typography } from "@mui/material";
+import { LIGHT_GRAY_BLUE, SECONDARY_COLOR } from "../../../constants/colors";
 import { shouldForwardProp } from "../../../helpers/shouldForwardProp";
 import useLayout from "../../../hooks/layout/useLayout";
 
@@ -20,21 +19,22 @@ const StyledTypography = styled(Typography)({
   marginBottom: "1rem",
 });
 
-const StyledLink = styled(Link)({
-  display: "flex",
-  justifyContent: "left",
-  fontSize: "24px",
-  marginTop: "1rem",
-  textAlign: "left",
-  color: ORANGE_BASE,
-  textDecoration: "none",
-  transition: "color 0.5s",
+const StyledTextButton = styled(Button)({
+  "&.MuiButton-text": {
+    display: "flex",
+    justifyContent: "left",
+    fontSize: "18px",
+    textAlign: "left",
+    color: SECONDARY_COLOR,
+    textDecoration: "none",
+    transition: "color 0.5s",
+  },
   "&:hover": {
-    color: ORANGE_HOVER,
+    color: LIGHT_GRAY_BLUE,
   },
-  "&:active": {
-    color: ORANGE_HOVER,
-  },
+  // "&:active": {
+  //   color: ORANGE_HOVER,
+  // },
 });
 
 function MissionVisionDescription() {
@@ -53,9 +53,9 @@ function MissionVisionDescription() {
           </i>
         </b>
       </StyledTypography>
-      <StyledLink to="/church">
-        <b>Ավելին</b>
-      </StyledLink>
+      <StyledTextButton variant="text">
+        <u>Ավելին</u>
+      </StyledTextButton>
     </Container>
   );
 }

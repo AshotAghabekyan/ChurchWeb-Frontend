@@ -4,7 +4,7 @@ import { SECONDARY_COLOR } from "../../constants/colors";
 import MobileHeader from "./mobile/MobileHeader";
 import useLayout from "../../hooks/layout/useLayout";
 import DesktopHeader from "./DesktopHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogoContainer from "./LogoContainer";
 import { ROOT_PAGE } from "../../constants/pages";
 
@@ -21,14 +21,15 @@ const StyledAppBar = styled(AppBar)({
   boxSizing: "border-box",
 });
 
-
 function Header() {
-  const navigator = useNavigate()
+  const navigator = useNavigate();
   const location = useLocation();
   const currentPathname = location.pathname;
   const { smallLayout } = useLayout();
   const [selectedNavigationTab, setSelectedNavigationTab] =
     useState<string>(currentPathname);
+
+  useEffect(() => setSelectedNavigationTab(currentPathname), [currentPathname]);
 
   return (
     <StyledAppBar>

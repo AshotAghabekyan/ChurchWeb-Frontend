@@ -1,12 +1,12 @@
-import styled from "@mui/system/styled";
+import { styled } from "@mui/material";
 import PrimaryButton from "./PrimaryButton";
 
 const StyledPrimaryButton = styled(PrimaryButton)({
-  paddingBlock: 20,
+  paddingBlock: 18,
 });
 
-function PrimaryButtonLarge(props) {
+const PrimaryButtonMedium = (props) => {
   return <StyledPrimaryButton {...props} />;
-}
+};
 
-export default PrimaryButtonLarge;
+export default PrimaryButtonMedium;

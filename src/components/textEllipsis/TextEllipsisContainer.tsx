@@ -2,38 +2,49 @@ import { Box, Collapse, IconButton, Stack } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useRef, useState } from "react";
 
+type TransitionTimeout = {
+  enter: number;
+  exit: number;
+};
+
 type Props = {
   children: React.ReactNode;
   collapsedHeight?: number; // px
   gradientHeight?: number; // px
+  timeout?: TransitionTimeout;
 };
 
 function TextEllipsisContainer({
   children,
   collapsedHeight = 300,
   gradientHeight = 50,
+  timeout = { enter: 500, exit: 500 },
 }: Props) {
+  const { enter: startTimeout, exit: exitTimeout } = timeout!;
   const [expanded, setExpanded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleToggle = () => {
-    if (ref.current && expanded) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleToggle = (e) => {
+    e.stopPropagation();
+    if (expanded) {
+      ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        setExpanded(false);
+      }, 300);
+    } else {
+      setExpanded(true);
     }
-    setExpanded((prev) => !prev);
   };
 
   return (
-    <Stack spacing={1} position="relative" ref={ref}>
-      <Collapse in={expanded} collapsedSize={collapsedHeight}>
-        <Box
-          sx={{
-            position: "relative",
-            overflow: "hidden",
-          }}
+    <div ref={ref}>
+      <Stack spacing={1} position="relative">
+        <Collapse
+          in={expanded}
+          timeout={{ exit: exitTimeout, enter: startTimeout }}
+          collapsedSize={collapsedHeight}
         >
-          {children}
-
+          <Box>{children}</Box>
           {!expanded && (
             <Box
               sx={{
@@ -41,25 +52,25 @@ function TextEllipsisContainer({
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: gradientHeight,
-                background: "linear-gradient(to bottom, transparent, white)",
+                height: `${collapsedHeight - gradientHeight}px`,
+                background: `linear-gradient(to bottom, transparent, white)`,
               }}
             />
           )}
-        </Box>
-      </Collapse>
+        </Collapse>
 
-      <IconButton
-        onClick={handleToggle}
-        sx={{
-          transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-          transition: "transform 0.3s ease",
-          alignSelf: "center",
-        }}
-      >
-        <ExpandMoreIcon />
-      </IconButton>
-    </Stack>
+        <IconButton
+          onClick={handleToggle}
+          sx={{
+            transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.3s ease",
+            alignSelf: "center",
+          }}
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </Stack>
+    </div>
   );
 }
 

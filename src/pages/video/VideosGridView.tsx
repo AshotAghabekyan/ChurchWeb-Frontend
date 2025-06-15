@@ -17,7 +17,7 @@ const Container = styled(Box)({
 function VideosGridView() {
   const { smallLayout } = useLayout();
   const { videosList, isLoading, errors } = useVideoList();
-
+  
   return (
     <Container>
       <PageHeader imageUrl={videoListHeaderBg}>

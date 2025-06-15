@@ -41,10 +41,10 @@ function FundamentalsFaith() {
       {smallLayout ? (
         <AccordionList />
       ) : (
-      <ColumnsContainer>
-        <LeftColumn />
-        <RightColumn />
-      </ColumnsContainer>
+        <ColumnsContainer>
+          <LeftColumn />
+          <RightColumn />
+        </ColumnsContainer>
       )}
     </Container>
   );

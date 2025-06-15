@@ -1,8 +1,10 @@
 import { Box, styled } from "@mui/material";
 import PlayVideoIcon from "./PlayVideoIcon";
 import { COMMON_BORDER_RADIUS } from "../../constants/common";
+import { useState } from "react";
+import RectangularSkeleton from "../skeleton/RectangularSkeleton";
 
-const ImageWrapper = styled(Box)({
+const ThumbnailWrapper = styled(Box)({
   display: "flex",
   justifyContent: "stretch",
   position: "relative",
@@ -23,12 +25,18 @@ const VideoBgImage = styled("img")({
 
 function VideoPlayer(props: any) {
   const { thumbnail, showPlayIcon, ...restProps } = props;
+  const [loading, setLoading] = useState(true);
 
   return (
-    <ImageWrapper {...restProps}>
-      <VideoBgImage src={thumbnail} />
-      {showPlayIcon && <PlayVideoIcon className="play-icon" />}
-    </ImageWrapper>
+    <ThumbnailWrapper {...restProps}>
+      {loading && <RectangularSkeleton skeletonHeight={300} />}
+      <VideoBgImage
+        src={thumbnail}
+        onLoad={() => setLoading(false)}
+        sx={{ display: loading ? "none" : "block" }}
+      />
+      {showPlayIcon && !loading && <PlayVideoIcon className="play-icon" />}
+    </ThumbnailWrapper>
   );
 }
 

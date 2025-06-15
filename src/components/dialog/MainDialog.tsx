@@ -9,6 +9,7 @@ import {
   styled,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { SECONDARY_COLOR } from "../../constants/colors";
 
 const DialogHeader = styled(Box)({
   display: "flex",
@@ -26,9 +27,14 @@ function MainDialog(props) {
       <DialogHeader>
         <Stack direction={"row"} alignItems={"center"}>
           {headerIcon}
-          <DialogTitle fontSize={32}>{title}</DialogTitle>
+          <DialogTitle sx={{ color: SECONDARY_COLOR }} fontSize={32}>
+            {title}
+          </DialogTitle>
         </Stack>
-        <CloseIcon sx={{ cursor: "pointer" }} onClick={onClose} />
+        <CloseIcon
+          sx={{ cursor: "pointer", color: SECONDARY_COLOR }}
+          onClick={onClose}
+        />
       </DialogHeader>
       <Divider></Divider>
       <DialogContent>{content}</DialogContent>

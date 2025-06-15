@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import useLayout from "../../../hooks/layout/useLayout";
 import MobileDialog from "../../../components/dialog/MobileDialog";
+import { SECONDARY_COLOR } from "../../../constants/colors";
 
 const StyledDialogContainer = styled(Box)({
   width: "100%",
@@ -45,7 +46,9 @@ function ShareVideoDialog(props) {
 
   const DialogContent = (
     <StyledDialogContainer>
-      <Typography variant="h6">{SHARE_ON_SOCIAL_NETWORKS}</Typography>
+      <Typography sx={{ color: SECONDARY_COLOR }} variant="h6">
+        {SHARE_ON_SOCIAL_NETWORKS}
+      </Typography>
       <Stack direction={"row"} spacing={5} justifyContent={"center"}>
         <StyledIcon icon={faceBookIcon} />
         <StyledIcon icon={xIcon} />
@@ -56,7 +59,9 @@ function ShareVideoDialog(props) {
 
   const DialogActions = (
     <StyledDialogContainer>
-      <Typography variant="h6">{COPY_LINK_LABEL_TEXT}</Typography>
+      <Typography sx={{ color: SECONDARY_COLOR }} variant="h6">
+        {COPY_LINK_LABEL_TEXT}
+      </Typography>
       <SecondaryButton
         onClick={() => setIsCopied(true)}
         fullWidth
@@ -70,7 +75,7 @@ function ShareVideoDialog(props) {
 
   const dialogProps = {
     title: SHARE_TEXT,
-    headerIcon: <ShareIcon />,
+    headerIcon: <ShareIcon sx={{ color: SECONDARY_COLOR }} />,
     content: DialogContent,
     actions: DialogActions,
     onClose: () => {

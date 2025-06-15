@@ -1,14 +1,13 @@
 import { Box, styled, Typography } from "@mui/material";
 import worshipBgImage from "../../../images/videosPageBackground.webp";
 import { shouldForwardProp } from "../../../helpers/shouldForwardProp";
-import { ORANGE_BASE } from "../../../constants/colors";
+import { SECONDARY_COLOR } from "../../../constants/colors";
 import ToVideosPageButton from "./ToVideosPageButton";
 import { DynamicLayout } from "../../../types/dynamicLayout";
 import useLayout from "../../../hooks/layout/useLayout";
 
 const Container = styled(Box)({
   width: "100%",
-  height: "450px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -21,11 +20,12 @@ const Container = styled(Box)({
 
 const Wrapper = styled(Box, { shouldForwardProp })(
   ({ $mediumLayout }: DynamicLayout) => ({
-    width: $mediumLayout ? "100%" : "50%",
+    width: $mediumLayout ? "100%" : "40%",
     height: "100%",
-    paddingInline: "5%",
-    backgroundColor: ORANGE_BASE,
+    padding: "5%",
+    backgroundColor: SECONDARY_COLOR,
     display: "flex",
+    gap: "32px",
     flexDirection: "column",
     justifyContent: "space-around",
   })

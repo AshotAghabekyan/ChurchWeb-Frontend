@@ -3,7 +3,8 @@ import { useNavigate } from "react-router";
 import { shouldForwardProp } from "../../../helpers/shouldForwardProp";
 import { DynamicLayout } from "../../../types/dynamicLayout";
 import useLayout from "../../../hooks/layout/useLayout";
-import PrimaryButtonLarge from "../../../components/button/PrimaryButtonLarge";
+import { WHITE } from "../../../constants/colors";
+import PrimaryButtonMedium from "../../../components/button/PrimaryButtonMedium";
 
 const Container = styled(Box, { shouldForwardProp })(
   ({ $smallLayout }: DynamicLayout) => ({
@@ -16,7 +17,15 @@ function ToVideosPageButton(props) {
   const navigate = useNavigate();
   return (
     <Container $smallLayout={smallLayout}>
-      <PrimaryButtonLarge
+      <PrimaryButtonMedium
+        size="medium"
+        variant="outlined"
+        sx={{
+          "&.MuiButton-outlined": {
+            borderColor: WHITE,
+            borderWidth: "5px",
+          },
+        }}
         fullWidth
         {...props}
         onClick={() => navigate("/videos")}

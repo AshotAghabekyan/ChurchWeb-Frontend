@@ -1,23 +1,17 @@
-import {
-  Box,
-  ImageList,
-  ImageListItem,
-  styled,
-  Typography,
-} from "@mui/material";
+import { ImageList, ImageListItem, Stack, styled } from "@mui/material";
 import useLayout from "../../hooks/layout/useLayout";
+import ImageListHeader from "./ImageListHeader";
 
-const GallerySection = styled(Box)({
-  padding: "3rem 1rem",
-  backgroundColor: "#fff",
+const GallerySection = styled(Stack)({
+  gap: "20px",
+  padding: "1rem 10%",
   color: "#000",
   textAlign: "center",
 });
 
 const StyledImageList = styled(ImageList)({
   width: "100%",
-  maxWidth: 1200,
-  margin: "auto",
+  maxWidth: '100%',
 });
 
 function ImageGrid() {
@@ -28,10 +22,8 @@ function ImageGrid() {
   }));
 
   return (
-    <GallerySection>
-      <Typography variant="h4" gutterBottom>
-        Մեր Եկեղեցին
-      </Typography>
+    <GallerySection direction={"column"}>
+      <ImageListHeader />
       <StyledImageList
         sx={{}}
         variant="masonry"

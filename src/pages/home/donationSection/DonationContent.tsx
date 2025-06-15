@@ -6,7 +6,8 @@ import useLayout from "../../../hooks/layout/useLayout";
 const Container = styled(Box, { shouldForwardProp })(
   ({ $smallLayout }: DynamicLayout) => ({
     textAlign: $smallLayout ? "left" : "justify",
-    paddingInline: "5%",
+    paddingInline: "10%",
+    margin: 'auto',
     display: "flex",
     flexDirection: "column",
     gap: 40,
