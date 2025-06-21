@@ -1,111 +1,89 @@
-import { useNavigate } from "react-router";
 import {
   Card,
-  CardActions,
   CardContent,
   CardMedia,
-  styled,
   Typography,
+  styled,
 } from "@mui/material";
-import { SECONDARY_COLOR } from "../../constants/colors";
-import { shouldForwardProp } from "../../helpers/shouldForwardProp";
-import SecondaryButtonMedium from "../../components/button/SecondaryButtonMedium";
-import useLayout from "../../hooks/layout/useLayout";
-import SecondaryButton from "../../components/button/SecondaryButton";
-import { CONTACTS_PAGE } from "../../constants/pages";
-import TextEllipsisContainer from "../../components/textEllipsis/TextEllipsisContainer";
 import { COMMON_BORDER_RADIUS } from "../../constants/common";
+import { WHITE } from "../../constants/colors";
+import { useState } from "react";
+import ServiceOverviewDialog from "./ServiceOverviewDialog";
 
-interface StyledCardProps {
-  $reverse: boolean;
-}
-
-const StyledCard = styled(Card, { shouldForwardProp })<StyledCardProps>(
-  ({ theme, $reverse }) => ({
-    display: "flex",
-    flexDirection: $reverse ? "row-reverse" : "row",
-    width: "100%",
-    padding: "2rem",
-    borderRadius: 0,
-    color: SECONDARY_COLOR,
-
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-    },
-
-    [theme.breakpoints.down("sm")]: {
-      padding: "1rem",
-    },
-  })
-);
-
-const StyledCardMedia = styled(CardMedia, { shouldForwardProp })(
-  ({ theme }) => ({
-    width: "100%",
-    height: "auto",
-    borderRadius: COMMON_BORDER_RADIUS,
-    objectFit: "contain",
-    [theme.breakpoints.down("md")]: {
-      height: "30rem",
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "20rem",
-    },
-  })
-);
-
-const StyledCardContent = styled(CardContent)({
-  width: "100%",
+const CardContainer = styled(Card)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
-});
-
-const StyledCardActions = styled(CardActions)(({ theme }) => ({
-  width: "60%",
+  cursor: "pointer",
+  width: "100%",
+  height: "400px",
   [theme.breakpoints.down("sm")]: {
-    width: "100%",
+    height: "300px",
   },
-  paddingInline: 0,
+  borderRadius: COMMON_BORDER_RADIUS,
+  overflow: "hidden",
+  transition: "transform 0.6s ease",
+  "&:hover": {
+    transform: "translateY(-10px)",
+  },
 }));
 
+const StyledCardMedia = styled(CardMedia)({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  zIndex: 0,
+});
+
+const GradientOverlay = styled("div")({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  zIndex: 1,
+  background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8))",
+});
+
+const StyledCardContent = styled(CardContent)({
+  position: "absolute",
+  justifyContent: "center",
+  top: 0,
+  left: 0,
+  zIndex: 2,
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  color: WHITE,
+  textAlign: "center",
+  textShadow: "0 2px 6px rgba(0,0,0,0.8)",
+});
+
 function ConcreteService(props) {
-  const { title, description, image, reverse } = props;
-  const { smallLayout } = useLayout();
-  const navigator = useNavigate();
-  const onClick = () => navigator(CONTACTS_PAGE);
+  const { title, image } = props;
+  const [showDialog, setShowDialog] = useState(false);
+  const handleOpenDialog = () => setShowDialog(true);
+  const handleCloseDialog = () => setShowDialog(false);
 
   return (
-    <StyledCard $reverse={reverse}>
-      <StyledCardMedia image={image}></StyledCardMedia>
-      <StyledCardContent>
-        <Typography paddingBlock={"16px"} variant="h4">
-          {title}
-        </Typography>
-
-        {smallLayout ? (
-          <TextEllipsisContainer
-            collapsedHeight={200}
-            timeout={{ enter: 300, exit: 300 }}
-          >
-            {description}
-          </TextEllipsisContainer>
-        ) : (
-          <Typography variant="h6">{description}</Typography>
-        )}
-
-        <StyledCardActions>
-          {smallLayout ? (
-            <SecondaryButton onClick={onClick} fullWidth>
-              Միանալ
-            </SecondaryButton>
-          ) : (
-            <SecondaryButtonMedium onClick={onClick} fullWidth>
-              Միանալ
-            </SecondaryButtonMedium>
-          )}
-        </StyledCardActions>
-      </StyledCardContent>
-    </StyledCard>
+    <>
+      <CardContainer onClick={handleOpenDialog} elevation={10}>
+        <StyledCardMedia image={image} />
+        <GradientOverlay />
+        <StyledCardContent>
+          <Typography variant="h4">{title}</Typography>
+        </StyledCardContent>
+      </CardContainer>
+      <ServiceOverviewDialog
+        {...props}
+        open={showDialog}
+        handleClose={handleCloseDialog}
+      />
+    </>
   );
 }
 

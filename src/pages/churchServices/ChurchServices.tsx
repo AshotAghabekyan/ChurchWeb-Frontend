@@ -4,12 +4,16 @@ import PageHeader from "../../components/PageHeader";
 import { WHITE } from "../../constants/colors";
 import { CHURCH_SERVICES } from "../../constants/churchServices";
 import PageHeaderTitle from "../../components/PageHeaderTitle";
-import ConcreteServiceV2 from "./ConcreteServiceV2";
+import ConcreteService from "./ConcreteService";
 import SecondaryButton from "../../components/button/SecondaryButton";
 import SecondaryButtonMedium from "../../components/button/SecondaryButtonMedium";
 import useLayout from "../../hooks/layout/useLayout";
 import { useNavigate } from "react-router";
 import { CONTACTS_PAGE } from "../../constants/pages";
+import {
+  CONTENT_PADDING,
+  MOBILE_CONTENT_PADDING,
+} from "../../constants/common";
 
 const Container = styled(Box)({
   width: "100%",
@@ -29,11 +33,16 @@ function ChurchServices() {
       <PageHeader imageUrl={headerBgImage}>
         <PageHeaderTitle>Մեր Ծառայությունները</PageHeaderTitle>
       </PageHeader>
-      <Grid container padding={"5% 2%"} spacing={5} width={"100%"}>
+      <Grid
+        container
+        padding={smallLayout ? MOBILE_CONTENT_PADDING : CONTENT_PADDING}
+        spacing={5}
+        width={"100%"}
+      >
         {CHURCH_SERVICES.map((service) => {
           return (
             <Grid key={service.title} size={{ md: 4, lg: 4, sm: 12, xs: 12 }}>
-              <ConcreteServiceV2
+              <ConcreteService
                 key={service.title}
                 title={service.title}
                 description={service.description}

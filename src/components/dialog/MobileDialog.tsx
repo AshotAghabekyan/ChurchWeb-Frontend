@@ -1,21 +1,16 @@
-import { Slide } from "@mui/material";
+import SlideTransition from "../transitions/Slide";
 import MainDialog from "./MainDialog";
-import { forwardRef } from "react";
-
-const SlideUpTransition = forwardRef(function Transiton(props: any, ref) {
-  const { children, ...restProps } = props;
-  return (
-    <Slide direction="up" ref={ref} {...restProps}>
-      {children}
-    </Slide>
-  );
-});
 
 function MobileDialog(props) {
   return (
     <MainDialog
       slots={{
-        transition: SlideUpTransition,
+        transition: SlideTransition,
+      }}
+      sx={{
+        "& .MuiDialogContent-root": {
+          paddingInline: "10px",
+        },
       }}
       slotProps={{
         paper: {
