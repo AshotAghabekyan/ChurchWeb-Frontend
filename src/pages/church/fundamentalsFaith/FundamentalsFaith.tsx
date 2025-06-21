@@ -33,12 +33,12 @@ const ColumnsContainer = styled(Box)(({ theme }) => ({
 }));
 
 function FundamentalsFaith() {
-  const { smallLayout } = useLayout();
+  const { mediumLayout } = useLayout();
 
   return (
     <Container>
       <SectionTitle>ՀԱՎԱՏՔԻ ՀԻՄՔԵՐԸ</SectionTitle>
-      {smallLayout ? (
+      {mediumLayout ? (
         <AccordionList />
       ) : (
         <ColumnsContainer>

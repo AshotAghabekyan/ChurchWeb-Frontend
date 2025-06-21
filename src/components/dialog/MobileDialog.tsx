@@ -7,11 +7,6 @@ function MobileDialog(props) {
       slots={{
         transition: SlideTransition,
       }}
-      sx={{
-        "& .MuiDialogContent-root": {
-          paddingInline: "10px",
-        },
-      }}
       slotProps={{
         paper: {
           sx: { width: "100%", position: "absolute", bottom: 0, margin: 0 },

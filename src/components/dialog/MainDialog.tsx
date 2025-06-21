@@ -11,6 +11,10 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { SECONDARY_COLOR } from "../../constants/colors";
 import useLayout from "../../hooks/layout/useLayout";
+import {
+  CONTENT_PADDING,
+  MOBILE_CONTENT_PADDING,
+} from "../../constants/common";
 
 const DialogHeader = styled(Box)({
   display: "flex",
@@ -30,7 +34,12 @@ function MainDialog(props) {
         <Stack direction={"row"} alignItems={"center"}>
           {headerIcon}
           <DialogTitle
-            sx={{ color: SECONDARY_COLOR }}
+            sx={{
+              color: SECONDARY_COLOR,
+              paddingInline: smallLayout
+                ? MOBILE_CONTENT_PADDING
+                : CONTENT_PADDING,
+            }}
             fontSize={smallLayout ? 24 : 32}
           >
             {title}
@@ -42,7 +51,11 @@ function MainDialog(props) {
         />
       </DialogHeader>
       <Divider></Divider>
-      <DialogContent>{content}</DialogContent>
+      <DialogContent
+        sx={smallLayout ? { paddingInline: MOBILE_CONTENT_PADDING } : {}}
+      >
+        {content}
+      </DialogContent>
       <DialogActions>{actions}</DialogActions>
     </Dialog>
   );

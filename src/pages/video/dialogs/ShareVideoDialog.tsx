@@ -18,6 +18,7 @@ import { useState } from "react";
 import useLayout from "../../../hooks/layout/useLayout";
 import MobileDialog from "../../../components/dialog/MobileDialog";
 import { SECONDARY_COLOR } from "../../../constants/colors";
+import ZoomTransition from "../../../components/transitions/Zoom";
 
 const StyledDialogContainer = styled(Box)({
   width: "100%",
@@ -88,7 +89,7 @@ function ShareVideoDialog(props) {
   return smallLayout ? (
     <MobileDialog {...dialogProps} />
   ) : (
-    <MainDialog {...dialogProps} />
+    <MainDialog {...dialogProps} slots={{ transition: ZoomTransition }} />
   );
 }
 
