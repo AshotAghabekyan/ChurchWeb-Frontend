@@ -1,4 +1,4 @@
-import { Divider, Grid, Stack, styled, Typography } from "@mui/material";
+import { Box, Divider, Stack, styled, Typography } from "@mui/material";
 import { PRIMARY_COLOR, SECONDARY_COLOR } from "../../constants/colors";
 import bgImage from "../../images/bibleImageBg.jpeg";
 import PageHeader from "../../components/PageHeader";
@@ -7,34 +7,36 @@ import PastorBiograpy from "./pastor/PastorBiography";
 import FundamentalsFaith from "./fundamentalsFaith/FundamentalsFaith";
 import useLayout from "../../hooks/layout/useLayout";
 import PageHeaderTitle from "../../components/PageHeaderTitle";
-import {
-  CONTENT_PADDING,
-  MOBILE_CONTENT_PADDING,
-} from "../../constants/common";
+import { CONTENT_PADDING } from "../../constants/common";
 
 const Container = styled(Stack)({
   backgroundColor: PRIMARY_COLOR,
 });
 
-const BiograpyContainer = styled(Grid)(({ theme }) => ({
+const BiograpyContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
   justifyContent: "center",
+  alignItems: "stretch",
+  gap: "2rem",
   padding: CONTENT_PADDING,
+  [theme.breakpoints.down("lg")]: {
+    flexDirection: "column",
+    alignItems: "center,",
+  },
   [theme.breakpoints.down("md")]: {
-    padding: MOBILE_CONTENT_PADDING,
+    padding: "1rem",
   },
 }));
 
-const ActivityPurposeParagraph = styled(Typography)(({ theme }) => ({
+const ActivityPurposeParagraph = styled("p")(({ theme }) => ({
   paddingInline: "20%",
+  [theme.breakpoints.down("md")]: { paddingInline: "1rem", paddingBlock: "5%" },
   paddingBlock: "2%",
   width: "100%",
   fontSize: 18,
   color: SECONDARY_COLOR,
   textAlign: "left",
-  [theme.breakpoints.down("md")]: {
-    paddingInline: "1rem",
-    paddingBlock: "5%",
-  },
 }));
 
 const BottomSectionParagraph = styled(Typography)(({ theme }) => ({
@@ -55,13 +57,9 @@ function Church() {
       <PageHeader imageUrl={bgImage}>
         <PageHeaderTitle>Եկեղեցի</PageHeaderTitle>
       </PageHeader>
-      <BiograpyContainer container spacing={4}>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <PastorAccount />
-        </Grid>
-        <Grid size={{ xs: 12, md: 8 }}>
-          <PastorBiograpy />
-        </Grid>
+      <BiograpyContainer>
+        <PastorAccount />
+        <PastorBiograpy />
       </BiograpyContainer>
 
       <FundamentalsFaith />
