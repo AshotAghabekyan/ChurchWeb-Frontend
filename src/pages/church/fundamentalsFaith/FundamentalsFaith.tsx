@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, styled } from "@mui/material";
+import { Box, Stack, styled } from "@mui/material";
 import { PRIMARY_PURPLE, WHITE } from "../../../constants/colors";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
@@ -20,6 +20,7 @@ const SectionTitle = styled("h2")({
 
 const ColumnsContainer = styled(Box)(({ theme }) => ({
   position: "relative",
+  display: "flex",
   justifyContent: "space-evenly",
   [theme.breakpoints.down("md")]: {
     maxHeight: "400px",

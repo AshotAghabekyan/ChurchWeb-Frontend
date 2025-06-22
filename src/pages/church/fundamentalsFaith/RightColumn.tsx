@@ -8,7 +8,9 @@ import {
 } from "../../../constants/common";
 
 const StyledList = styled(List)(({ theme }) => ({
+  width: "45%",
   [theme.breakpoints.down("md")]: {
+    width: "90%",
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
   },

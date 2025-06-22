@@ -14,7 +14,9 @@ const StyledList = styled(List)(({ theme }) => ({
   gap: 32,
   backgroundColor: LIGHT_PURPLE,
   borderRadius: COMMON_BORDER_RADIUS,
+  width: "45%",
   [theme.breakpoints.down("md")]: {
+    width: "90%",
     borderBottomRightRadius: 0,
     borderBottomLeftRadius: 0,
   },
