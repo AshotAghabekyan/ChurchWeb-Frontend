@@ -1,4 +1,4 @@
-import { Grid, Stack, styled } from "@mui/material";
+import { Box, Grid, Stack, styled } from "@mui/material";
 import { PRIMARY_PURPLE, WHITE } from "../../../constants/colors";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
@@ -18,7 +18,7 @@ const SectionTitle = styled("h2")({
   color: WHITE,
 });
 
-const ColumnsContainer = styled(Grid)(({ theme }) => ({
+const ColumnsContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   justifyContent: "space-evenly",
   [theme.breakpoints.down("md")]: {
@@ -38,13 +38,9 @@ function FundamentalsFaith() {
       {mediumLayout ? (
         <AccordionList />
       ) : (
-        <ColumnsContainer spacing={4} container>
-          <Grid size={6}>
-            <LeftColumn />
-          </Grid>
-          <Grid size={6}>
-            <RightColumn />
-          </Grid>
+        <ColumnsContainer>
+          <LeftColumn />
+          <RightColumn />
         </ColumnsContainer>
       )}
     </Container>
