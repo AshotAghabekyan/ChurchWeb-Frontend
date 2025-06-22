@@ -20,10 +20,10 @@ const Container = styled(Stack)(({ theme }) => ({
 }));
 
 function PastorBiograpy() {
-  const { smallLayout } = useLayout();
+  const { mediumLayout } = useLayout();
   return (
     <Container>
-      {smallLayout ? <PastorBiographyMobile /> : <BiographyContent />}
+      {mediumLayout ? <PastorBiographyMobile /> : <BiographyContent />}
     </Container>
   );
 }

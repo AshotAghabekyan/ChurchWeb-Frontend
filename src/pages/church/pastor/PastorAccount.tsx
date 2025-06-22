@@ -3,14 +3,11 @@ import pastorImage from "../../../images/pastorMainImage.jpg";
 import { SECONDARY_COLOR } from "../../../constants/colors";
 import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
-const Container = styled(Stack)(({ theme }) => ({
-  width: "40%",
+const Container = styled(Stack)({
+  width: "100%",
   alignItems: "center",
   textAlign: "center",
-  [theme.breakpoints.down("md")]: {
-    width: "100%",
-  },
-}));
+});
 
 const PastorImage = styled("img")(({ theme }) => {
   return {
