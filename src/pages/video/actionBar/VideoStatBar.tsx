@@ -10,10 +10,15 @@ function VideoStatsBar(props) {
   return (
     <>
       <ChipContainer>
-        <DefaultChip variant="outlined" label={`${VIEWS_TEXT}: ${viewCount}`} />
+        <DefaultChip
+          variant="outlined"
+          onClick={() => {}}
+          label={`${VIEWS_TEXT}: ${viewCount}`}
+        />
       </ChipContainer>
       <ChipContainer>
         <DefaultChip
+          onClick={() => {}}
           variant="outlined"
           icon={<FavoriteBorderIcon />}
           label={likeCount}

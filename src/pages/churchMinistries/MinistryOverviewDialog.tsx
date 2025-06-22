@@ -27,7 +27,7 @@ const CardContainer = styled(Card)(({ theme }) => ({
   },
 }));
 
-function ServiceOverviewDialog(props) {
+function MinistryOverviewDialog(props) {
   const { title, description, image, open, handleClose } = props;
   const { smallLayout } = useLayout();
   const DialogContent = (
@@ -87,4 +87,4 @@ function ServiceOverviewDialog(props) {
   );
 }
 
-export default ServiceOverviewDialog;
+export default MinistryOverviewDialog;

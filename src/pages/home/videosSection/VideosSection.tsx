@@ -1,13 +1,23 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Box, Paper, styled, Typography } from "@mui/material";
 import worshipBgImage from "../../../images/videosPageBackground.webp";
-import { shouldForwardProp } from "../../../helpers/shouldForwardProp";
-import { SECONDARY_COLOR } from "../../../constants/colors";
-import ToVideosPageButton from "./ToVideosPageButton";
-import { DynamicLayout } from "../../../types/dynamicLayout";
 import useLayout from "../../../hooks/layout/useLayout";
+import {
+  COMMON_BORDER_RADIUS,
+  CONTENT_PADDING,
+} from "../../../constants/common";
+import PrimaryButtonMedium from "../../../components/button/PrimaryButtonMedium";
+import { useNavigate } from "react-router";
+import { VIDEOS_ROOT_PAGE } from "../../../constants/pages";
 
-const Container = styled(Box)({
-  width: "100%",
+const Container = styled(Paper)(({ theme }) => ({
+  position: "relative",
+  width: "95%",
+  padding: CONTENT_PADDING,
+  alignSelf: "center",
+  borderRadius: COMMON_BORDER_RADIUS,
+  "& *": {
+    borderRadius: COMMON_BORDER_RADIUS,
+  },
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -15,47 +25,55 @@ const Container = styled(Box)({
   background: `url(${worshipBgImage})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
+  [theme.breakpoints.down("sm")]: {
+    backgroundPosition: "center",
+  },
   color: "white",
-});
+}));
 
-const Wrapper = styled(Box, { shouldForwardProp })(
-  ({ $mediumLayout }: DynamicLayout) => ({
-    width: $mediumLayout ? "100%" : "40%",
-    height: "100%",
-    padding: "5%",
-    backgroundColor: SECONDARY_COLOR,
-    display: "flex",
-    gap: "32px",
-    flexDirection: "column",
-    justifyContent: "space-around",
-  })
-);
+const GradientOverlay = styled(Box)({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  zIndex: 1,
+  background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.3))",
+});
 
 const WrapperContent = styled(Box)({
   width: "100%",
+  height: 300,
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
   flexDirection: "column",
   gap: "30px",
+  zIndex: 1,
+  textShadow: "0 2px 6px rgba(0,0,0,0.8)",
 });
 
 function VideosSection() {
-  const { mediumLayout, smallLayout } = useLayout();
+  const { smallLayout } = useLayout();
+  const navigator = useNavigate();
+
   return (
-    <Container>
-      <Wrapper $mediumLayout={mediumLayout}>
-        <WrapperContent>
-          <Typography variant="h3">Մեր տեսանյութերը</Typography>
-          <Typography variant={smallLayout ? "h5" : "h4"}>
-            Դիտեք մեր ծառայություններն օնլայն
-          </Typography>
-        </WrapperContent>
-        <ToVideosPageButton>
-          <Typography variant="h5">
-            <b>Դիտել</b>
-          </Typography>
-        </ToVideosPageButton>
-      </Wrapper>
+    <Container elevation={10}>
+      <GradientOverlay />
+      <WrapperContent>
+        <Typography variant={smallLayout ? "h4" : "h3"}>
+          Մեր տեսանյութերը
+        </Typography>
+        <Typography variant={smallLayout ? "h5" : "h4"}>
+          Դիտեք մեր ծառայություններն օնլայն
+        </Typography>
+        <PrimaryButtonMedium
+          onClick={() => navigator(VIDEOS_ROOT_PAGE)}
+          sx={{ width: smallLayout ? "100%" : "40%" }}
+        >
+          <b>Դիտել</b>
+        </PrimaryButtonMedium>
+      </WrapperContent>
     </Container>
   );
 }

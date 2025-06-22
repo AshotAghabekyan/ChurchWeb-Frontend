@@ -17,7 +17,7 @@ function VideoItemPaper(props) {
     slotProps = {},
   } = props;
   const navigator = useNavigate();
-  const { snippet, statistics } = video;
+  const { snippet, statistics, id: videoId } = video;
   const { thumbnails } = snippet;
   const imageUrl = thumbnails.maxres.url;
   const { videoPlayer: videoPlayerProps = {} } = slotProps;
@@ -27,7 +27,7 @@ function VideoItemPaper(props) {
       <VideoPlayer
         thumbnail={imageUrl}
         showPlayIcon
-        onClick={() => navigator(`${CONCRETE_VIDEO_PAGE}/${video.id}`)}
+        onClick={() => navigator(`${CONCRETE_VIDEO_PAGE}/${videoId}`)}
         {...videoPlayerProps}
       />
       {showTitle && (
@@ -35,7 +35,9 @@ function VideoItemPaper(props) {
           {snippet.title}
         </Typography>
       )}
-      {showBottomSection && <VideoBottomBar slotProps={{ statistics }} />}
+      {showBottomSection && (
+        <VideoBottomBar slotProps={{ statistics, actions: { videoId } }} />
+      )}
     </StyledPaper>
   );
 }

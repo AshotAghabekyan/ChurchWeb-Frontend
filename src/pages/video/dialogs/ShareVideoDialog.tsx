@@ -1,11 +1,18 @@
-import { Box, Stack, styled, Typography } from "@mui/material";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { useState } from "react";
+import {
+  Box,
+  IconButton,
+  Stack,
+  styled,
+  SvgIcon,
+  Typography,
+} from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
-import faceBookIcon from "../../../images/facebookIcon.webp";
-import threadsIcon from "../../../images/threadsIcon.webp";
-import xIcon from "../../../images/twitter.webp";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import XIcon from "@mui/icons-material/X";
+import ThreadsIcon from "../../../images/icons/threads-app-icon.svg";
 import MainDialog from "../../../components/dialog/MainDialog";
-import Icon from "../../../components/Icon/Icon";
 import SecondaryButton from "../../../components/button/SecondaryButton";
 import {
   COPIED_TEXT,
@@ -14,11 +21,17 @@ import {
   SHARE_ON_SOCIAL_NETWORKS,
   SHARE_TEXT,
 } from "../../../constants/typography";
-import { useState } from "react";
 import useLayout from "../../../hooks/layout/useLayout";
 import MobileDialog from "../../../components/dialog/MobileDialog";
 import { SECONDARY_COLOR } from "../../../constants/colors";
 import ZoomTransition from "../../../components/transitions/Zoom";
+import { copyToClimboard } from "../../../helpers/navigator";
+import {
+  shareOnFacebook,
+  shareOnThreads,
+  shareOnX,
+} from "../../../helpers/socialNetworks";
+import { generateYoutubeVideoLink } from "../../../helpers/video";
 
 const StyledDialogContainer = styled(Box)({
   width: "100%",
@@ -30,30 +43,29 @@ const StyledDialogContainer = styled(Box)({
   marginBottom: "1rem",
 });
 
-const StyledIcon = styled(Icon)({
-  width: 48,
-  height: 48,
-  cursor: "pointer",
-  transition: "0.5s",
-  "&:hover": {
-    scale: 1.1,
-  },
-});
-
 function ShareVideoDialog(props) {
-  const { onClose, ...restProps } = props;
+  const { onClose, videoId, ...restProps } = props;
   const { smallLayout } = useLayout();
   const [isCopied, setIsCopied] = useState<boolean>(false);
+  const youtubeVideoLink = generateYoutubeVideoLink(videoId);
 
   const DialogContent = (
     <StyledDialogContainer>
       <Typography sx={{ color: SECONDARY_COLOR }} variant="h6">
         {SHARE_ON_SOCIAL_NETWORKS}
       </Typography>
-      <Stack direction={"row"} spacing={5} justifyContent={"center"}>
-        <StyledIcon icon={faceBookIcon} />
-        <StyledIcon icon={xIcon} />
-        <StyledIcon icon={threadsIcon} />
+      <Stack direction={"row"} spacing={2} justifyContent={"center"}>
+        <IconButton href={shareOnFacebook(youtubeVideoLink)} target="_blank">
+          <FacebookIcon sx={{ fontSize: "52px" }} color="primary" />
+        </IconButton>
+        <IconButton href={shareOnX(youtubeVideoLink)} target="_blank">
+          <XIcon sx={{ fontSize: "42px" }} />
+        </IconButton>
+        <IconButton href={shareOnThreads(youtubeVideoLink)} target="_blank">
+          <SvgIcon sx={{ color: "black", fontSize: "42px" }}>
+            <ThreadsIcon />
+          </SvgIcon>
+        </IconButton>
       </Stack>
     </StyledDialogContainer>
   );
@@ -64,7 +76,10 @@ function ShareVideoDialog(props) {
         {COPY_LINK_LABEL_TEXT}
       </Typography>
       <SecondaryButton
-        onClick={() => setIsCopied(true)}
+        onClick={() => {
+          copyToClimboard(youtubeVideoLink);
+          setIsCopied(true);
+        }}
         fullWidth
         disabled={isCopied}
         endIcon={<ContentCopyIcon />}

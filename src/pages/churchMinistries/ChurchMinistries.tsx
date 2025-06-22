@@ -1,10 +1,10 @@
 import { Box, Grid, styled } from "@mui/material";
-import headerBgImage from "../../images/servicesBackground.webp";
+import headerBgImage from "../../images/ministeriesBackground.webp";
 import PageHeader from "../../components/PageHeader";
 import { WHITE } from "../../constants/colors";
-import { CHURCH_SERVICES } from "../../constants/churchServices";
+import { CHURCH_MINISTERIES } from "../../constants/churchMinistries";
 import PageHeaderTitle from "../../components/PageHeaderTitle";
-import ConcreteService from "./ConcreteService";
+import ConcreteService from "./ConcreteMinistry";
 import SecondaryButton from "../../components/button/SecondaryButton";
 import SecondaryButtonMedium from "../../components/button/SecondaryButtonMedium";
 import useLayout from "../../hooks/layout/useLayout";
@@ -23,7 +23,7 @@ const Container = styled(Box)({
   backgroundColor: WHITE,
 });
 
-function ChurchServices() {
+function ChurchMinistries() {
   const { smallLayout } = useLayout();
   const navigator = useNavigate();
   const onClick = () => navigator(CONTACTS_PAGE);
@@ -39,7 +39,7 @@ function ChurchServices() {
         spacing={5}
         width={"100%"}
       >
-        {CHURCH_SERVICES.map((service) => {
+        {CHURCH_MINISTERIES.map((service) => {
           return (
             <Grid key={service.title} size={{ md: 4, lg: 4, sm: 12, xs: 12 }}>
               <ConcreteService
@@ -74,4 +74,4 @@ function ChurchServices() {
   );
 }
 
-export default ChurchServices;
+export default ChurchMinistries;

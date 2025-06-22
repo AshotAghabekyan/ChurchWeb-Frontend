@@ -1,7 +1,6 @@
 import { styled } from "@mui/material";
-import Icon from "../Icon/Icon";
 
-const StyledIcon = styled(Icon)({
+const StyledIcon = styled("img")({
   width: `20px`,
   height: `20px`,
   marginBottom: `20px`,

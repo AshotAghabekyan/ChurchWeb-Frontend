@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import handsWithHearthGif from "../../../images/handWithHearth.gif";
+import handsWithHearthGif from "../../../images/icons/handWithHearth.gif";
 
 const Container = styled(Box)({
   width: "100%",

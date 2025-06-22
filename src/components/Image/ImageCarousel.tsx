@@ -24,7 +24,7 @@ const StyledImg = styled("img")({
 });
 
 const galleryImages = Array.from({ length: 13 }, (_, i) => ({
-  img: `/src/images/${i}.webp`,
+  img: `/src/images/carousel/${i}.webp`,
   title: `Image ${i}`,
 }));
 
@@ -32,7 +32,10 @@ function ImageCarousel() {
   return (
     <Container alignItems={"flex-start"} direction={"column"}>
       <ImageListHeader />
-      <ScrollContainer sx={{ width: "100vw", padding: "1rem" }}>
+      <ScrollContainer
+        hideScrollbar={true}
+        sx={{ width: "100vw", padding: "1rem" }}
+      >
         {galleryImages.map((item, index) => {
           return (
             <StackImageItem elevation={4} key={index}>

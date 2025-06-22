@@ -11,13 +11,13 @@ const GallerySection = styled(Stack)({
 
 const StyledImageList = styled(ImageList)({
   width: "100%",
-  maxWidth: '100%',
+  maxWidth: "100%",
 });
 
 function ImageGrid() {
   const { smallLayout } = useLayout();
   const galleryImages = Array.from({ length: 13 }, (_, i) => ({
-    img: `/src/images/${i}.webp`,
+    img: `/src/images/carousel/${i}.webp`,
     title: `Image ${i}`,
   }));
 

@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardContent,
   CardMedia,
@@ -8,7 +9,7 @@ import {
 import { COMMON_BORDER_RADIUS } from "../../constants/common";
 import { WHITE } from "../../constants/colors";
 import { useState } from "react";
-import ServiceOverviewDialog from "./ServiceOverviewDialog";
+import ServiceOverviewDialog from "./MinistryOverviewDialog";
 
 const CardContainer = styled(Card)(({ theme }) => ({
   position: "relative",
@@ -38,7 +39,7 @@ const StyledCardMedia = styled(CardMedia)({
   zIndex: 0,
 });
 
-const GradientOverlay = styled("div")({
+const GradientOverlay = styled(Box)({
   position: "absolute",
   top: 0,
   left: 0,
@@ -63,7 +64,7 @@ const StyledCardContent = styled(CardContent)({
   textShadow: "0 2px 6px rgba(0,0,0,0.8)",
 });
 
-function ConcreteService(props) {
+function ConcreteMinistry(props) {
   const { title, image } = props;
   const [showDialog, setShowDialog] = useState(false);
   const handleOpenDialog = () => setShowDialog(true);
@@ -87,4 +88,4 @@ function ConcreteService(props) {
   );
 }
 
-export default ConcreteService;
+export default ConcreteMinistry;

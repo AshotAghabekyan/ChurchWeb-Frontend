@@ -1,8 +1,8 @@
 import {
   CHURCH_PAGE,
   CONTACTS_PAGE,
+  MINISTERIES_PAGE,
   ROOT_PAGE,
-  SERVICES_PAGE,
   VIDEOS_ROOT_PAGE,
 } from "./pages";
 
@@ -19,7 +19,7 @@ export const HEADER_MENU_OPTIONS = [
     id: 2,
   },
   {
-    link: SERVICES_PAGE,
+    link: MINISTERIES_PAGE,
     label: "Ծառայություններ",
     id: 3,
   },

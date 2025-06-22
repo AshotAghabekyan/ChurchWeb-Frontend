@@ -4,6 +4,7 @@ import { DARK_GRAY, WHITE } from "../../constants/colors";
 import SelectedVideoActions from "./actionBar/SelectedVideoActions";
 import useLayout from "../../hooks/layout/useLayout";
 import { COMMON_BORDER_RADIUS } from "../../constants/common";
+import { generateEmbededYoutubeVideoLink } from "../../helpers/video";
 
 const VideoPlayerContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -37,22 +38,27 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 
 function SelectedVideoPlayer(props) {
   const { video } = props;
-  const { snippet, statistics } = video;
+  const { snippet, statistics, id: videoId } = video;
   const { thumbnails, title } = snippet;
   const imageUrl = thumbnails.maxres.url;
   const { smallLayout, mediumLayout } = useLayout();
+
   return (
     <VideoPlayerContainer>
       <VideoPlayer
         showPlayIcon
         thumbnail={imageUrl}
+        videoUrl={generateEmbededYoutubeVideoLink(videoId)}
         sx={{ borderRadius: mediumLayout ? "0" : "10px 10px 0 0" }}
       />
       <BottomContainer>
         <StyledTypography variant={smallLayout ? "h6" : "h5"}>
           {title}
         </StyledTypography>
-        <SelectedVideoActions statProps={statistics} />
+        <SelectedVideoActions
+          statProps={statistics}
+          actionProps={{ videoId }}
+        />
       </BottomContainer>
     </VideoPlayerContainer>
   );

@@ -13,12 +13,12 @@ const Container = styled(Box)({
 
 function VideoBottomBar(props) {
   const { slotProps = {} } = props;
-  const { statistics, actionProps } = slotProps;
+  const { statistics, actions: actionProps } = slotProps;
 
   return (
     <Container>
       <VideoStatsBar {...statistics} />
-      <VideoActionsBar {...actionProps} />
+      <VideoActionsBar actionProps={actionProps} />
     </Container>
   );
 }

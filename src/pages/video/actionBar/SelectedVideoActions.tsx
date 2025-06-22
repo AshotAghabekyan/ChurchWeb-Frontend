@@ -6,6 +6,7 @@ import VideoActionsBar from "./VideoActionBar";
 import FilledLightChip from "../../../components/chip/FilledLightChip";
 import OutlinedLightChip from "../../../components/chip/OutlinedLightChip";
 import { COMMON_BORDER_RADIUS } from "../../../constants/common";
+import { SUB_TO_CHANNEL_URL } from "../../../constants/api";
 
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -24,9 +25,13 @@ function SelectedVideoActions(props) {
   const { statProps, actionProps = {}, ...restProps } = props;
   const subscribeChip = (
     <Chip
+      component="a"
+      target="_blank"
+      href={SUB_TO_CHANNEL_URL}
       color="error"
       label="Բաժանորդագրվել"
       icon={<YouTubeIcon />}
+      onClick={() => {}}
       clickable
     />
   );
