@@ -1,16 +1,15 @@
-import { Box, styled } from "@mui/material";
+import { Grid, Stack, styled } from "@mui/material";
 import { PRIMARY_PURPLE, WHITE } from "../../../constants/colors";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import useLayout from "../../../hooks/layout/useLayout";
 import AccordionList from "./AccordionList";
+import { CONTENT_PADDING } from "../../../constants/common";
 
-const Container = styled(Box)({
-  width: "100%",
-  display: "flex",
-  flexDirection: "column",
+const Container = styled(Stack)({
   backgroundColor: PRIMARY_PURPLE,
   paddingBlock: "5%",
+  padding: CONTENT_PADDING,
 });
 
 const SectionTitle = styled("h2")({
@@ -19,14 +18,12 @@ const SectionTitle = styled("h2")({
   color: WHITE,
 });
 
-const ColumnsContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
+const ColumnsContainer = styled(Grid)(({ theme }) => ({
   position: "relative",
   justifyContent: "space-evenly",
   [theme.breakpoints.down("md")]: {
     maxHeight: "400px",
     overflow: "auto",
-    flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
   },
@@ -41,9 +38,13 @@ function FundamentalsFaith() {
       {mediumLayout ? (
         <AccordionList />
       ) : (
-        <ColumnsContainer>
-          <LeftColumn />
-          <RightColumn />
+        <ColumnsContainer spacing={4} container>
+          <Grid size={6}>
+            <LeftColumn />
+          </Grid>
+          <Grid size={6}>
+            <RightColumn />
+          </Grid>
         </ColumnsContainer>
       )}
     </Container>

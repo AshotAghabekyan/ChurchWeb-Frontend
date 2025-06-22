@@ -1,4 +1,10 @@
-export const CHURCH_WEEKLY_SCHEDULE = [
+interface ChurchWeeklySchedule {
+  title: string;
+  description?: string;
+  time: string;
+}
+
+export const CHURCH_WEEKLY_SCHEDULE: ChurchWeeklySchedule[] = [
   {
     title: "ԿԻՐԱԿՆՕՐՅԱ ԾԱՌԱՅՈՒԹՅՈՒՆ",
     description:

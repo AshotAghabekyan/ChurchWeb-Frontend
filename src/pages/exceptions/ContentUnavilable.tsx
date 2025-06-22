@@ -1,7 +1,7 @@
 import { Typography, Stack } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import PrimaryButton from "../../components/button/PrimaryButton"; // путь подгони под себя
+import PrimaryButton from "../../components/button/PrimaryButton"; 
 
 interface SectionErrorProps {
   message?: string;

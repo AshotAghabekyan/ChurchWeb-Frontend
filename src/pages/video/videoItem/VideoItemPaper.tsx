@@ -31,7 +31,10 @@ function VideoItemPaper(props) {
         {...videoPlayerProps}
       />
       {showTitle && (
-        <Typography variant="overline" padding={"12px"} textAlign={"center"}>
+        <Typography
+          variant="overline"
+          sx={{ padding: "12px", textAlign: "center" }}
+        >
           {snippet.title}
         </Typography>
       )}

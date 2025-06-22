@@ -2,6 +2,7 @@ import { Paper, Stack, styled } from "@mui/material";
 import ScrollContainer from "../ScrollContainer";
 import { COMMON_BORDER_RADIUS } from "../../constants/common";
 import ImageListHeader from "./ImageListHeader";
+import { GalleryItem } from "./interfaces";
 
 const Container = styled(Stack)({
   width: "100%",
@@ -23,7 +24,7 @@ const StyledImg = styled("img")({
   borderRadius: COMMON_BORDER_RADIUS,
 });
 
-const galleryImages = Array.from({ length: 13 }, (_, i) => ({
+const galleryImages: GalleryItem[] = Array.from({ length: 13 }, (_, i) => ({
   img: `/src/images/carousel/${i}.webp`,
   title: `Image ${i}`,
 }));

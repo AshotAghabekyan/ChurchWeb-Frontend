@@ -2,17 +2,17 @@ import { Box, Collapse, IconButton, Stack } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useRef, useState } from "react";
 
-type TransitionTimeout = {
+interface TransitionTimeout {
   enter: number;
   exit: number;
-};
+}
 
-type Props = {
+interface Props {
   children: React.ReactNode;
   collapsedHeight?: number; // px
   gradientHeight?: number; // px
   timeout?: TransitionTimeout;
-};
+}
 
 function TextEllipsisContainer({
   children,
@@ -21,7 +21,7 @@ function TextEllipsisContainer({
   timeout = { enter: 500, exit: 500 },
 }: Props) {
   const { enter: startTimeout, exit: exitTimeout } = timeout!;
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleToggle = (e) => {

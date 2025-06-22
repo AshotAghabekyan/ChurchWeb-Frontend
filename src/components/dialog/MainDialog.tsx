@@ -23,7 +23,7 @@ const DialogHeader = styled(Box)({
   paddingInline: "1rem",
 });
 
-function MainDialog(props) {
+function MainDialog(props: any) {
   const { title, headerIcon, content, onClose, open, actions, ...restProps } =
     props;
 

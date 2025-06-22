@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router";
 import { HEADER_MENU_OPTIONS } from "../../constants/header";
-import { HeaderMenuOption } from "../../types/header";
 import NavigationTab from "./NavigationTab";
 import NavigationTabs from "./NavigationTabs";
 import HeaderToolbar from "./HeaderToolbar";
+import { NavigationOption } from "./interfaces";
 
 function DesktopHeader(props: any) {
   const { activeMenu, setActiveMenu } = props;
@@ -17,7 +17,7 @@ function DesktopHeader(props: any) {
         value={safeActiveMenu}
         onChange={(_: unknown, value: number) => setActiveMenu(value)}
       >
-        {HEADER_MENU_OPTIONS.map((option: HeaderMenuOption) => {
+        {HEADER_MENU_OPTIONS.map((option: NavigationOption) => {
           return (
             <NavigationTab
               key={option.id}

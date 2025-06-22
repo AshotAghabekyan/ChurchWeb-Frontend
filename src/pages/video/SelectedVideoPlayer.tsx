@@ -1,31 +1,26 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Stack, styled, Typography } from "@mui/material";
 import VideoPlayer from "../../components/video/VideoPlayer";
 import { DARK_GRAY, WHITE } from "../../constants/colors";
 import SelectedVideoActions from "./actionBar/SelectedVideoActions";
 import useLayout from "../../hooks/layout/useLayout";
-import { COMMON_BORDER_RADIUS } from "../../constants/common";
+import { COMMON_BORDER_RADIUS, CONTENT_PADDING } from "../../constants/common";
 import { generateEmbededYoutubeVideoLink } from "../../helpers/video";
 
-const VideoPlayerContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
+const VideoPlayerContainer = styled(Stack)(({ theme }) => ({
   justifyContent: "stretch",
   alignSelf: "center",
-  width: "60%",
   padding: "20px",
+  width: "100%",
   [theme.breakpoints.down("md")]: {
     padding: "0",
-    width: "100%",
   },
 }));
 
-const BottomContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
+const BottomContainer = styled(Stack)({
   gap: "1rem",
   borderRadius: `0 0 ${COMMON_BORDER_RADIUS}px ${COMMON_BORDER_RADIUS}px`,
   backgroundColor: DARK_GRAY,
-  padding: "1rem",
+  padding: CONTENT_PADDING,
 });
 
 const StyledTypography = styled(Typography)(({ theme }) => ({

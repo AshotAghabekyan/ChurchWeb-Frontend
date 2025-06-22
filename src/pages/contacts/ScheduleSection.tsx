@@ -16,7 +16,6 @@ import {
 const Container = styled(Stack)(({ theme }) => ({
   padding: CONTENT_PADDING,
   width: "100%",
-  flexDirection: "column",
   gap: "5%",
   backgroundColor: PRIMARY_PURPLE,
   [theme.breakpoints.down("sm")]: {

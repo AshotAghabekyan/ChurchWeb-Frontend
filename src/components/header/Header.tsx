@@ -1,5 +1,10 @@
 import { AppBar, styled } from "@mui/material";
-import { useLocation, useNavigate } from "react-router";
+import {
+  Location,
+  NavigateFunction,
+  useLocation,
+  useNavigate,
+} from "react-router";
 import { SECONDARY_COLOR } from "../../constants/colors";
 import MobileHeader from "./mobile/MobileHeader";
 import useLayout from "../../hooks/layout/useLayout";
@@ -22,9 +27,9 @@ const StyledAppBar = styled(AppBar)({
 });
 
 function Header() {
-  const navigator = useNavigate();
-  const location = useLocation();
-  const currentPathname = location.pathname;
+  const navigator: NavigateFunction = useNavigate();
+  const location: Location = useLocation();
+  const currentPathname: string = location.pathname;
   const { smallLayout } = useLayout();
   const [selectedNavigationTab, setSelectedNavigationTab] =
     useState<string>(currentPathname);

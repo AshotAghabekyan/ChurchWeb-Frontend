@@ -1,4 +1,4 @@
-import { Box, Grid, styled } from "@mui/system";
+import { Grid, Stack } from "@mui/system";
 import videoListHeaderBg from "../../images/videosPageBackground.webp";
 import useLayout from "../../hooks/layout/useLayout";
 import { useVideoList } from "./useVideoGridView";
@@ -8,23 +8,22 @@ import { VIDEO_LIST_PAGE_HEADER_TITLE } from "../../constants/typography";
 import VideoItemGrid from "./videoItem/VideoItemGrid";
 import PageHeaderTitle from "../../components/PageHeaderTitle";
 import ServerErrorPage from "../exceptions/ServerErrorPage";
-
-const Container = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-});
+import {
+  CONTENT_PADDING,
+  MOBILE_CONTENT_PADDING,
+} from "../../constants/common";
 
 function VideosGridView() {
   const { smallLayout } = useLayout();
   const { videosList, isLoading, errors } = useVideoList();
-  
+
   return (
-    <Container>
+    <Stack>
       <PageHeader imageUrl={videoListHeaderBg}>
         <PageHeaderTitle>{VIDEO_LIST_PAGE_HEADER_TITLE}</PageHeaderTitle>
       </PageHeader>
       <Grid
-        padding={smallLayout ? "1rem" : "2rem"}
+        padding={smallLayout ? MOBILE_CONTENT_PADDING : CONTENT_PADDING}
         container
         rowSpacing={5}
         columnSpacing={5}
@@ -41,7 +40,7 @@ function VideosGridView() {
           })
         )}
       </Grid>
-    </Container>
+    </Stack>
   );
 }
 

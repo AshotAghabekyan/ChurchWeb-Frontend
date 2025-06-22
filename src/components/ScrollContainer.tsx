@@ -2,8 +2,12 @@ import { List, styled } from "@mui/material";
 import { COMMON_BORDER_RADIUS } from "../constants/common";
 import { shouldForwardProp } from "../helpers/shouldForwardProp";
 
+interface ListProps {
+  $hideScrollbar: boolean;
+}
+
 const StyledList = styled(List, { shouldForwardProp })(
-  ({ $hideScrollbar }: any) => ({
+  ({ $hideScrollbar }: ListProps) => ({
     display: "flex",
     justifyContent: "space-evenly",
     flexDirection: "row",
@@ -23,7 +27,12 @@ const StyledList = styled(List, { shouldForwardProp })(
   })
 );
 
-function ScrollContainer(props: any) {
+interface Props {
+  hideScrollbar?: boolean;
+  [key: string]: any;
+}
+
+function ScrollContainer(props: Props) {
   const { hideScrollbar = false, ...restProps } = props;
   return <StyledList {...restProps} $hideScrollbar={hideScrollbar} />;
 }

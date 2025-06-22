@@ -1,7 +1,7 @@
 import SlideTransition from "../transitions/Slide";
 import MainDialog from "./MainDialog";
 
-function MobileDialog(props) {
+function MobileDialog(props: any) {
   return (
     <MainDialog
       slots={{

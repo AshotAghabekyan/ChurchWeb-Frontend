@@ -1,13 +1,10 @@
-import { Box, styled } from "@mui/material";
+import { Stack, styled } from "@mui/material";
 import { LIGHT_GRAY_BLUE, PRIMARY_COLOR } from "../../../constants/colors";
 import GifIcon from "./GifIcon";
 import DonationContent from "./DonationContent";
 
-const Container = styled(Box)({
-  width: "100%",
+const Container = styled(Stack)({
   minHeight: 300,
-  display: "flex",
-  flexDirection: "column",
   justifyContent: "space-between",
   gap: "max(10%, 40px)",
   alignItems: "center",

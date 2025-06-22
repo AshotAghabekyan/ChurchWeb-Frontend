@@ -1,6 +1,7 @@
 import { ImageList, ImageListItem, Stack, styled } from "@mui/material";
 import useLayout from "../../hooks/layout/useLayout";
 import ImageListHeader from "./ImageListHeader";
+import { GalleryItem } from "./interfaces";
 
 const GallerySection = styled(Stack)({
   gap: "20px",
@@ -14,9 +15,10 @@ const StyledImageList = styled(ImageList)({
   maxWidth: "100%",
 });
 
+
 function ImageGrid() {
   const { smallLayout } = useLayout();
-  const galleryImages = Array.from({ length: 13 }, (_, i) => ({
+  const galleryImages: GalleryItem[] = Array.from({ length: 13 }, (_, i) => ({
     img: `/src/images/carousel/${i}.webp`,
     title: `Image ${i}`,
   }));

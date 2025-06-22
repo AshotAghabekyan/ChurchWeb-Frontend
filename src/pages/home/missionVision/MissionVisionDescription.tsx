@@ -1,19 +1,11 @@
-import { Box, Button, styled, Typography } from "@mui/material";
+import { Button, Stack, styled, Typography } from "@mui/material";
 import { LIGHT_GRAY_BLUE, SECONDARY_COLOR } from "../../../constants/colors";
-import { shouldForwardProp } from "../../../helpers/shouldForwardProp";
-import useLayout from "../../../hooks/layout/useLayout";
 
-const Container = styled(Box, { shouldForwardProp })(
-  ({ $smallLayout }: { $smallLayout: boolean }) => ({
-    width: $smallLayout ? "100%" : "45%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    textAlign: "left",
-  })
-);
+const Container = styled(Stack)({
+  justifyContent: "center",
+  alignItems: "flex-start",
+  textAlign: "left",
+});
 
 const StyledTypography = styled(Typography)({
   marginBottom: "1rem",
@@ -32,15 +24,11 @@ const StyledTextButton = styled(Button)({
   "&:hover": {
     color: LIGHT_GRAY_BLUE,
   },
-  // "&:active": {
-  //   color: ORANGE_HOVER,
-  // },
 });
 
 function MissionVisionDescription() {
-  const { smallLayout } = useLayout();
   return (
-    <Container $smallLayout={smallLayout}>
+    <Container>
       <StyledTypography variant="h6">
         Մեր նպատակն է առաջնորդել մարդկանց Հիսուս Քրիստոսի հետ անձնական
         փոխհարաբերության։

@@ -1,20 +1,20 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 import { DARK_GRAY, WHITE } from "../../constants/colors";
 import { useSuggestedVideoList } from "./useSuggestedVideoList";
 import LoadingPlaceholder from "../../components/LoadPlaceholder";
 import VideoItemList from "./videoItem/VideoItemList";
-import { COMMON_BORDER_RADIUS } from "../../constants/common";
+import {
+  COMMON_BORDER_RADIUS,
+  MOBILE_CONTENT_PADDING,
+} from "../../constants/common";
 import ScrollContainer from "../../components/ScrollContainer";
 import ContentUnavailable from "../exceptions/ContentUnavilable";
 
-const Container = styled(Box)(({ theme }) => ({
-  width: "60%",
-  display: "flex",
+const Container = styled(Stack)(({ theme }) => ({
+  width: "100%",
   alignSelf: "center",
-  flexDirection: "column",
   padding: "1.5rem 20px",
   [theme.breakpoints.down("md")]: {
-    width: "100%",
     padding: "1.5rem 1rem",
   },
 }));
@@ -24,7 +24,7 @@ const SuggestedVideosHeader = styled(Box)({
   backgroundColor: DARK_GRAY,
   color: WHITE,
   textAlign: "center",
-  padding: "1rem",
+  padding: MOBILE_CONTENT_PADDING,
   borderRadius: COMMON_BORDER_RADIUS,
 });
 
@@ -44,7 +44,8 @@ function SuggestedVideoList() {
         {isLoading ? (
           <LoadingPlaceholder />
         ) : (
-          !errors && relatedVideos.map((video: any) => (
+          !errors &&
+          relatedVideos.map((video: any) => (
             <VideoItemList
               video={video}
               showBottomSection={false}

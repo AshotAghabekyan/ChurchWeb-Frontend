@@ -2,7 +2,13 @@ import juniorsMinistryImage from "../images/junior_ministry.webp";
 import homeGroupsMinistryImage from "../images/home_group_ministry.webp";
 import teenMinistryImage from "../images/teen_ministry.webp";
 
-export const CHURCH_MINISTERIES = [
+interface ChurchMinistery {
+  title: string;
+  description: string;
+  image: string;
+}
+
+export const CHURCH_MINISTERIES: ChurchMinistery[] = [
   {
     title: "Մանկական ծառայություն",
     description:

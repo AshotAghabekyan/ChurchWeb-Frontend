@@ -4,8 +4,8 @@ import {
   HEADER_MENU_OPTIONS,
   ROOT_PAGE_OPTIONS,
 } from "../../../constants/header";
-import { HeaderMenuOption } from "../../../types/header";
 import { SECONDARY_COLOR, WHITE } from "../../../constants/colors";
+import { NavigationOption } from "../interfaces";
 
 const StyledList = styled(List)({
   width: "100%",
@@ -38,14 +38,14 @@ const DividerIndicator = styled(Divider)({
   backgroundColor: WHITE,
 });
 
-function MobileMenuList(props) {
+function MobileMenuList(props: any) {
   const { activeMenu, setActiveMenu, onClose } = props;
   const navigator = useNavigate();
   const options = [ROOT_PAGE_OPTIONS, ...HEADER_MENU_OPTIONS];
 
   return (
     <StyledList>
-      {options.map((option: HeaderMenuOption) => {
+      {options.map((option: NavigationOption) => {
         return (
           <StyledListItem
             key={option.id}

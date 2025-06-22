@@ -1,24 +1,19 @@
-import { Box, styled } from "@mui/material";
-import { shouldForwardProp } from "../../helpers/shouldForwardProp";
-import { DynamicLayout } from "../../types/dynamicLayout";
-import useLayout from "../../hooks/layout/useLayout";
+import { Stack, styled } from "@mui/material";
 
-const StyledBox = styled(Box, { shouldForwardProp })(
-  ({ $smallLayout }: DynamicLayout) => ({
-    width: "80%",
-    display: "flex",
-    flexDirection: $smallLayout ? "column" : "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "10%",
-    margin: `8px 0`,
-    textAlign: "center",
-  })
-);
+const StyledStack = styled(Stack)(({ theme }) => ({
+  width: "80%",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: "10%",
+  margin: `8px 0`,
+  textAlign: "center",
+  [theme.breakpoints.up("sm")]: {
+    flexDirection: "row",
+  },
+}));
 
 function FooterBottomSection(props) {
-  const { smallLayout } = useLayout();
-  return <StyledBox $smallLayout={smallLayout} {...props} />;
+  return <StyledStack {...props} />;
 }
 
 export default FooterBottomSection;

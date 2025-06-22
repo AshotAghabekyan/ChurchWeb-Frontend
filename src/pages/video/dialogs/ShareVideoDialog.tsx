@@ -1,17 +1,10 @@
 import { useState } from "react";
-import {
-  Box,
-  IconButton,
-  Stack,
-  styled,
-  SvgIcon,
-  Typography,
-} from "@mui/material";
+import { IconButton, Stack, styled, SvgIcon, Typography } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
-import ThreadsIcon from "../../../images/icons/threads-app-icon.svg";
+import ThreadsIcon from "../../../images/icons/threads-app-icon.svg?react";
 import MainDialog from "../../../components/dialog/MainDialog";
 import SecondaryButton from "../../../components/button/SecondaryButton";
 import {
@@ -33,10 +26,8 @@ import {
 } from "../../../helpers/socialNetworks";
 import { generateYoutubeVideoLink } from "../../../helpers/video";
 
-const StyledDialogContainer = styled(Box)({
+const StyledDialogContainer = styled(Stack)({
   width: "100%",
-  display: "flex",
-  flexDirection: "column",
   justifyContent: "center",
   textAlign: "center",
   gap: "1rem",
@@ -54,9 +45,16 @@ function ShareVideoDialog(props) {
       <Typography sx={{ color: SECONDARY_COLOR }} variant="h6">
         {SHARE_ON_SOCIAL_NETWORKS}
       </Typography>
-      <Stack direction={"row"} spacing={2} justifyContent={"center"}>
+      <Stack
+        sx={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        spacing={2}
+      >
         <IconButton href={shareOnFacebook(youtubeVideoLink)} target="_blank">
-          <FacebookIcon sx={{ fontSize: "52px" }} color="primary" />
+          <FacebookIcon sx={{ fontSize: "52px", mt: '16px' }} color="primary" />
         </IconButton>
         <IconButton href={shareOnX(youtubeVideoLink)} target="_blank">
           <XIcon sx={{ fontSize: "42px" }} />

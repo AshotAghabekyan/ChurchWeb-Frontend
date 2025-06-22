@@ -16,7 +16,6 @@ const CardContainer = styled(Card)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   cursor: "pointer",
-  width: "100%",
   height: "400px",
   [theme.breakpoints.down("sm")]: {
     height: "300px",

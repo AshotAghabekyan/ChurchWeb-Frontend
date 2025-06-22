@@ -9,7 +9,7 @@ const Container = styled(Box)({
   cursor: "pointer",
 });
 
-function ChipContainer(props) {
+function ChipContainer(props: any) {
   return <Container {...props} />;
 }
 

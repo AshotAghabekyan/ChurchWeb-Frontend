@@ -1,9 +1,4 @@
-import {
-  Box,
-  CircularProgress,
-  Skeleton,
-  styled,
-} from "@mui/material";
+import { Box, CircularProgress, Skeleton, styled } from "@mui/material";
 import { shouldForwardProp } from "../../helpers/shouldForwardProp";
 import { SECONDARY_COLOR } from "../../constants/colors";
 
@@ -26,16 +21,22 @@ const StyledSkeleton = styled(Skeleton, { shouldForwardProp })(
   })
 );
 
+interface Props {
+  showLoadingProgress?: boolean;
+  skeletonHeight?: number | string;
+}
+
 function RectangularSkeleton({
-  showLoadingProgrsss = true,
+  showLoadingProgress = true,
   skeletonHeight = "100%",
-}) {
+}: Props) {
   const height =
     typeof skeletonHeight == "number" ? `${skeletonHeight}px` : skeletonHeight;
+
   return (
     <Box width={"100%"} height={"100%"} position={"relative"}>
       <StyledSkeleton $height={height} variant="rectangular" />
-      {showLoadingProgrsss && <StyledCircularProgress />}
+      {showLoadingProgress && <StyledCircularProgress />}
     </Box>
   );
 }

@@ -1,24 +1,26 @@
-import { Box, styled, Typography } from "@mui/material";
+import { Stack, styled, Typography } from "@mui/material";
 import { shouldForwardProp } from "../../../helpers/shouldForwardProp";
-import { DynamicLayout } from "../../../types/dynamicLayout";
 import useLayout from "../../../hooks/layout/useLayout";
 
-const Container = styled(Box, { shouldForwardProp })(
-  ({ $smallLayout }: DynamicLayout) => ({
-    textAlign: $smallLayout ? "left" : "justify",
-    paddingInline: "10%",
-    margin: 'auto',
-    display: "flex",
-    flexDirection: "column",
-    gap: 40,
-  })
-);
+const Container = styled(Stack, { shouldForwardProp })(({ theme }) => ({
+  textAlign: "justify",
+  paddingInline: "10%",
+  margin: "auto",
+  gap: 40,
+  [theme.breakpoints.down("md")]: {
+    textAlign: "left",
+    gap: 20,
+  },
+}));
 
 function DonationContent() {
   const { smallLayout } = useLayout();
   return (
-    <Container $smallLayout={smallLayout}>
-      <Typography sx={{ lineHeight: "2" }} variant={smallLayout ? "h5" : "h4"}>
+    <Container>
+      <Typography
+        sx={{ lineHeight: smallLayout ? 1.5 : 2 }}
+        variant={smallLayout ? "h5" : "h4"}
+      >
         “Ամեն մեկը թող ըստ իր սրտի հոժարության տա և ոչ թե տրտմությամբ կամ
         հարկադրաբար, որովհետև Աստված սիրում է հոժարությամբ տվողին։”
       </Typography>

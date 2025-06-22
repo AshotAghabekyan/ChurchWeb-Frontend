@@ -1,4 +1,11 @@
-export const FAIHT_FUNDAMENTALS_LEFT_COLUMN = [
+interface FaithFundamentalColumn {
+  id: number;
+  title: string;
+  description: string;
+  refVerb: string;
+}
+
+export const FAIHT_FUNDAMENTALS_LEFT_COLUMN: FaithFundamentalColumn[] = [
   {
     id: 1,
     title: "Աստվածաշունչ",
@@ -64,7 +71,7 @@ export const FAIHT_FUNDAMENTALS_LEFT_COLUMN = [
   },
 ];
 
-export const FAIHT_FUNDAMENTALS_RIGHT_COLUMN = [
+export const FAIHT_FUNDAMENTALS_RIGHT_COLUMN: FaithFundamentalColumn[] = [
   {
     id: 10,
     title: "Հարություն",
@@ -120,9 +127,4 @@ export const FAIHT_FUNDAMENTALS_RIGHT_COLUMN = [
       "Տրված է Պենտեկոստեի օրը: Սա խոստմունք էր Հորից, որը կատարվեց Հիսուս Քրիստոսի հարությունից հետո՝ եկեղեցու ամրության և Ավետարանը ամբողջ աշխարհում քարոզելու համար: Նրա նպատակը հավատացյալների ամրապնդումը և անհավատներին նշաններ ցույց տալն է:",
     refVerb: "(Գործք. 2:17, 2:38-39, Մկ. 16:17)",
   },
-];
-
-export const PASTOR_BIOGRAPHY_SECTIONS = [
-  "Հովիվ Տիգրան Թադևոսյանը ծնվել է 1965 թվականին Երևանում։ Սովորել է Երևանի թիվ 139 անգլիական թեքումով դպրոցում (այժմ՝ Կ. Դեմիրճյանի անվան):",
-  "Հայրենիքին ծառայելուց հետո նա շարունակեց իր կրթությունը Կույբիշևի (այժմ՝Սամարայի) Կուլտուրայի պետական համալսարանում, ստանալով «Մշակութալուսավորչական գործունեության կազմակերպման մեթոդիստ» մասնագիտություն։"
 ];

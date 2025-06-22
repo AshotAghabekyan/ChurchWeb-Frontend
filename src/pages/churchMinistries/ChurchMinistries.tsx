@@ -1,4 +1,5 @@
-import { Box, Grid, styled } from "@mui/material";
+import { useNavigate } from "react-router";
+import { Grid, Stack, styled } from "@mui/material";
 import headerBgImage from "../../images/ministeriesBackground.webp";
 import PageHeader from "../../components/PageHeader";
 import { WHITE } from "../../constants/colors";
@@ -8,18 +9,14 @@ import ConcreteService from "./ConcreteMinistry";
 import SecondaryButton from "../../components/button/SecondaryButton";
 import SecondaryButtonMedium from "../../components/button/SecondaryButtonMedium";
 import useLayout from "../../hooks/layout/useLayout";
-import { useNavigate } from "react-router";
 import { CONTACTS_PAGE } from "../../constants/pages";
 import {
   CONTENT_PADDING,
   MOBILE_CONTENT_PADDING,
 } from "../../constants/common";
 
-const Container = styled(Box)({
-  width: "100%",
-  display: "flex",
+const Container = styled(Stack)({
   justifyContent: "center",
-  flexDirection: "column",
   backgroundColor: WHITE,
 });
 
@@ -37,11 +34,10 @@ function ChurchMinistries() {
         container
         padding={smallLayout ? MOBILE_CONTENT_PADDING : CONTENT_PADDING}
         spacing={5}
-        width={"100%"}
       >
         {CHURCH_MINISTERIES.map((service) => {
           return (
-            <Grid key={service.title} size={{ md: 4, lg: 4, sm: 12, xs: 12 }}>
+            <Grid key={service.title} size={{ md: 4, sm: 12, xs: 12 }}>
               <ConcreteService
                 key={service.title}
                 title={service.title}
@@ -51,14 +47,7 @@ function ChurchMinistries() {
             </Grid>
           );
         })}
-        <Grid
-          size={12}
-          sx={{
-            position: "sticky",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <Grid size={12} sx={{ display: "flex", justifyContent: "center" }}>
           {smallLayout ? (
             <SecondaryButton onClick={onClick} fullWidth>
               Միանալ

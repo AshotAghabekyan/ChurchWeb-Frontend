@@ -11,7 +11,7 @@ const StyledChip = styled(Chip)({
   },
 });
 
-function OutlinedLightChip(props) {
+function OutlinedLightChip(props: any) {
   return <StyledChip {...props} />;
 }
 

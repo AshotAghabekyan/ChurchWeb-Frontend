@@ -25,10 +25,17 @@ const VideoBgImage = styled("img")({
   objectFit: "cover",
 });
 
-function VideoPlayer(props: any) {
+interface VideoPlayerProps {
+  thumbnail: string;
+  videoUrl: string;
+  showPlayIcon: boolean;
+  [key: string]: any;
+}
+
+function VideoPlayer(props: VideoPlayerProps) {
   const { thumbnail, videoUrl, showPlayIcon, ...restProps } = props;
-  const [loading, setLoading] = useState(true);
-  const [loadEmbededVideo, setLoadEmbededVideo] = useState(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [loadEmbededVideo, setLoadEmbededVideo] = useState<boolean>(false);
   useEffect(() => setLoadEmbededVideo(false), [videoUrl]);
 
   return (

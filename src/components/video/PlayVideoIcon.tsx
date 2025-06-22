@@ -17,7 +17,7 @@ const StyledIcon = styled(PlayCircleOutlineIcon)(({ theme }) => ({
   },
 }));
 
-function PlayVideoIcon(props) {
+function PlayVideoIcon(props: any) {
   return <StyledIcon {...props} />;
 }
 

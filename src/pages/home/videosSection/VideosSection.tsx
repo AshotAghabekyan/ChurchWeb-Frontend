@@ -1,4 +1,4 @@
-import { Box, Paper, styled, Typography } from "@mui/material";
+import { Box, Paper, Stack, styled, Typography } from "@mui/material";
 import worshipBgImage from "../../../images/videosPageBackground.webp";
 import useLayout from "../../../hooks/layout/useLayout";
 import {
@@ -41,14 +41,12 @@ const GradientOverlay = styled(Box)({
   background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.3))",
 });
 
-const WrapperContent = styled(Box)({
+const WrapperContent = styled(Stack)({
   width: "100%",
   height: 300,
-  display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  flexDirection: "column",
-  gap: "30px",
+  gap: 30,
   zIndex: 1,
   textShadow: "0 2px 6px rgba(0,0,0,0.8)",
 });
