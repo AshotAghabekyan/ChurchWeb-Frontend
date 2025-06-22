@@ -1,13 +1,16 @@
-import { Stack, styled } from "@mui/material";
+import { Box, Stack, styled } from "@mui/material";
 import pastorImage from "../../../images/pastorMainImage.jpg";
 import { SECONDARY_COLOR } from "../../../constants/colors";
 import { COMMON_BORDER_RADIUS } from "../../../constants/common";
 
-const Container = styled(Stack)({
-  width: "100%",
+const Container = styled(Stack)(({ theme }) => ({
+  width: "40%",
   alignItems: "center",
   textAlign: "center",
-});
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
+}));
 
 const PastorImage = styled("img")(({ theme }) => {
   return {
@@ -24,7 +27,9 @@ const PastorImage = styled("img")(({ theme }) => {
   };
 });
 
-const PastorInfo = styled(Stack)({
+const PastorInfo = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   color: SECONDARY_COLOR,

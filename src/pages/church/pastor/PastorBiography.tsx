@@ -8,13 +8,16 @@ import BiographyContent from "./BiograhyText";
 import useLayout from "../../../hooks/layout/useLayout";
 import PastorBiographyMobile from "./PastorBiographyMobile";
 
-const Container = styled(Stack)({
+const Container = styled(Stack)(({ theme }) => ({
   backgroundColor: WHITE,
   color: PRIMARY_PURPLE,
   padding: CONTENT_PADDING,
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
   borderRadius: COMMON_BORDER_RADIUS,
   animation: "slideUp 1s ease-out",
-});
+}));
 
 function PastorBiograpy() {
   const { smallLayout } = useLayout();
