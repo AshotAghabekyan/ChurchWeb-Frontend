@@ -6,13 +6,13 @@ import DonationContent from "./DonationContent";
 const Container = styled(Stack)({
   minHeight: 300,
   justifyContent: "space-between",
-  gap: "max(10%, 40px)",
+  gap: 10,
   alignItems: "center",
   textAlign: "center",
   lineHeight: 2,
   backgroundColor: PRIMARY_COLOR,
   color: LIGHT_GRAY_BLUE,
-  paddingTop: "2rem",
+  paddingTop: "3rem",
   paddingBottom: "3rem",
 });
 

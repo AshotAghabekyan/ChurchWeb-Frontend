@@ -1,20 +1,27 @@
-import { styled } from "@mui/material";
-import { DARK_GOLDEN, LIGHT_GOLDEN, PRIMARY_PURPLE } from "../../../constants/colors";
+import { styled, Typography } from "@mui/material";
+import {
+  BRIGHT_GOLDEN,
+  LIGHT_GOLDEN,
+  PRIMARY_PURPLE,
+} from "../../../constants/colors";
+import useLayout from "../../../hooks/layout/useLayout";
 
-const BiographyHeader = styled("h2")({
+const BiographyHeader = styled(Typography)({
   fontWeight: "bold",
   marginBottom: "1rem",
 });
 
-const BiographyParagraph = styled("p")({
+const BiographyParagraph = styled(Typography)(({ theme }) => ({
   fontSize: 18,
   padding: 8,
-});
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
+}));
 
-const HighlightedParagraph = styled("p")({
+const HighlightedParagraph = styled(Typography)({
   color: PRIMARY_PURPLE,
-  background: `linear-gradient(135deg, ${DARK_GOLDEN}, ${LIGHT_GOLDEN})`,
-  borderLeft: DARK_GOLDEN,
+  background: `linear-gradient(135deg, ${BRIGHT_GOLDEN}, ${LIGHT_GOLDEN})`,
   padding: "1rem",
   margin: "2rem 0",
   fontStyle: "italic",
@@ -23,11 +30,11 @@ const HighlightedParagraph = styled("p")({
   borderRadius: 5,
 });
 
-
 function BiographyContent() {
+  const { smallLayout } = useLayout();
   return (
     <>
-      <BiographyHeader>
+      <BiographyHeader variant={smallLayout ? "subtitle1" : "h5"}>
         Հովիվ Տիգրան Թադևոսյանը ծնվել է 1965 թվականին Երևանում։ Սովորել է Երևանի
         թիվ 139 անգլիական թեքումով դպրոցում (այժմ՝ Կ. Դեմիրճյանի անվան)։
       </BiographyHeader>
@@ -67,5 +74,4 @@ function BiographyContent() {
   );
 }
 
-
-export default BiographyContent
+export default BiographyContent;

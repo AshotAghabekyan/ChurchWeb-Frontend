@@ -6,10 +6,9 @@ const Container = styled(Stack, { shouldForwardProp })(({ theme }) => ({
   textAlign: "justify",
   paddingInline: "10%",
   margin: "auto",
-  gap: 40,
+  gap: 20,
   [theme.breakpoints.down("md")]: {
     textAlign: "left",
-    gap: 20,
   },
 }));
 

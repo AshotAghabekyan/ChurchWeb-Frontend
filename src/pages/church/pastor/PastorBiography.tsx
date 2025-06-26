@@ -3,6 +3,7 @@ import { PRIMARY_PURPLE, WHITE } from "../../../constants/colors";
 import {
   COMMON_BORDER_RADIUS,
   CONTENT_PADDING,
+  MOBILE_CONTENT_PADDING,
 } from "../../../constants/common";
 import BiographyContent from "./BiograhyText";
 import useLayout from "../../../hooks/layout/useLayout";
@@ -14,6 +15,9 @@ const Container = styled(Stack)(({ theme }) => ({
   padding: CONTENT_PADDING,
   [theme.breakpoints.down("md")]: {
     width: "100%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: MOBILE_CONTENT_PADDING,
   },
   borderRadius: COMMON_BORDER_RADIUS,
   animation: "slideUp 1s ease-out",

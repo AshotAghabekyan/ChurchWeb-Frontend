@@ -4,13 +4,19 @@ import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import useLayout from "../../../hooks/layout/useLayout";
 import AccordionList from "./AccordionList";
-import { CONTENT_PADDING } from "../../../constants/common";
+import {
+  CONTENT_PADDING,
+  MOBILE_CONTENT_PADDING,
+} from "../../../constants/common";
 
-const Container = styled(Stack)({
+const Container = styled(Stack)(({ theme }) => ({
   backgroundColor: PRIMARY_PURPLE,
   paddingBlock: "5%",
   padding: CONTENT_PADDING,
-});
+  [theme.breakpoints.down("sm")]: {
+    padding: MOBILE_CONTENT_PADDING,
+  },
+}));
 
 const SectionTitle = styled("h2")({
   textAlign: "center",
