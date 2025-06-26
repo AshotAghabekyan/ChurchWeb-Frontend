@@ -7,7 +7,7 @@ export function useSuggestedVideoList() {
   const { smallLayout } = useLayout();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errors, setErrors] = useState(null);
-  const [relatedVideos, setRelatedVideos] = useState([]);
+  const [relatedVideos, setRelatedVideos] = useState<any>([]);
   const params = useParams();
   const videoId = params.id!;
 

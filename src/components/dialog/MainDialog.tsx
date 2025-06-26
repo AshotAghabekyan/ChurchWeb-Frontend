@@ -17,11 +17,17 @@ import {
   MOBILE_CONTENT_PADDING,
 } from "../../constants/common";
 
-const StyledDialog = styled(Dialog)({
+const StyledDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialog-paper": {
     borderRadius: COMMON_BORDER_RADIUS,
   },
-});
+  [theme.breakpoints.down("sm")]: {
+    "& .MuiDialog-paper": {
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+    },
+  },
+}));
 
 const DialogHeader = styled(Box)({
   display: "flex",

@@ -1,14 +1,14 @@
 import { Divider, styled, Typography } from "@mui/material";
 import { PRIMARY_COLOR } from "../../constants/colors";
 import headerBgImage from "../../images/home_header.webp";
-import MissionVisionSection from "./missionVision/MissionVisionSection";
-import VideosSection from "./videosSection/VideosSection";
-import DonationSection from "./donationSection/DonationSection";
-import PageHeader from "../../components/PageHeader";
 import useLayout from "../../hooks/layout/useLayout";
 import ImageGrid from "../../components/Image/ImageGrid";
-import VisitUs from "./VisitUs";
 import ImageCarousel from "../../components/Image/ImageCarousel";
+import PageHeader from "../../components/PageHeader";
+import DonationSection from "./donationSection/DonationSection";
+import MissionVisionSection from "./missionVision/MissionVisionSection";
+import VideosSection from "./videosSection/VideosSection";
+import VisitUs from "./VisitUs";
 
 const Container = styled("main")({
   display: "flex",

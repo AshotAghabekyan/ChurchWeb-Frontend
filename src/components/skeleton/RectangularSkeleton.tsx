@@ -2,11 +2,18 @@ import { Box, CircularProgress, Skeleton, styled } from "@mui/material";
 import { shouldForwardProp } from "../../helpers/shouldForwardProp";
 import { SECONDARY_COLOR } from "../../constants/colors";
 
-const StyledCircularProgress = styled(CircularProgress)({
+const LoaderContainer = styled(Box)({
   position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  top: "0%",
+  left: "0%",
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const StyledCircularProgress = styled(CircularProgress)({
   color: SECONDARY_COLOR,
 });
 
@@ -36,7 +43,11 @@ function RectangularSkeleton({
   return (
     <Box width={"100%"} height={"100%"} position={"relative"}>
       <StyledSkeleton $height={height} variant="rectangular" />
-      {showLoadingProgress && <StyledCircularProgress />}
+      {showLoadingProgress && (
+        <LoaderContainer>
+          <StyledCircularProgress />
+        </LoaderContainer>
+      )}
     </Box>
   );
 }
